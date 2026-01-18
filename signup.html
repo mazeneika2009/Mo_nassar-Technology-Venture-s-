@@ -463,13 +463,6 @@
             </p>
         </form>
 
-        <div class="divider"><span>OR</span></div>
-
-        <div class="social-buttons">
-            <button type="button" class="social-btn" id="googleBtn" onclick="handleGoogleSignup()">🔵 Continue with Google</button>
-            <button type="button" class="social-btn" id="githubBtn" onclick="handleGithubSignup()">🐙 Continue with GitHub</button>
-        </div>
-
         <div class="trust-badge">
             <span>✓ No credit card required</span>
             <span>✓ 14-day free trial</span>
@@ -478,6 +471,15 @@
     </div>
 
     <script>
+        // Initialize Google Sign-In
+        window.onload = function() {
+            google.accounts.id.initialize({
+                client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com', // Replace with your Google Client ID
+                callback: handleCredentialResponse,
+                auto_select: false
+            });
+        };
+
         function handleSignupSubmit(event) {
             event.preventDefault();
             
@@ -528,38 +530,6 @@
             
             alert('Account created! Moving to create your project...');
             window.location.href = 'add-project.html';
-        }
-
-        function handleGoogleSignup() {
-            const googleBtn = document.getElementById('googleBtn');
-            googleBtn.disabled = true;
-            googleBtn.textContent = '⏳ Connecting...';
-            
-            // Simulate loading, then redirect to Google OAuth
-            setTimeout(() => {
-                // Production: Replace with your actual Google OAuth endpoint
-                const clientId = 'YOUR_GOOGLE_CLIENT_ID';
-                const redirectUri = encodeURIComponent(window.location.origin + '/auth/google/callback');
-                const scope = encodeURIComponent('openid email profile');
-                
-                window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
-            }, 500);
-        }
-
-        function handleGithubSignup() {
-            const githubBtn = document.getElementById('githubBtn');
-            githubBtn.disabled = true;
-            githubBtn.textContent = '⏳ Connecting...';
-            
-            // Simulate loading, then redirect to GitHub OAuth
-            setTimeout(() => {
-                // Production: Replace with your actual GitHub OAuth endpoint
-                const clientId = 'YOUR_GITHUB_CLIENT_ID';
-                const redirectUri = encodeURIComponent(window.location.origin + '/auth/github/callback');
-                const scope = encodeURIComponent('read:user user:email');
-                
-                window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
-            }, 500);
         }
     </script>
 </body>
