@@ -330,24 +330,76 @@
 
 
 
+        /* Mobile Sidebar Toggle */
+        .mobile-sidebar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #1f2937;
+            margin-right: 15px;
+        }
+
+        /* Overlay */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .mobile-sidebar-toggle {
+                display: block;
+            }
+
             .sidebar {
-                width: 100%;
-                height: auto;
-                position: static;
-                border-bottom: 1px solid #374151;
-                min-height: auto;
+                width: 260px;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 1000;
+                position: fixed;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                border-bottom: none;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay.active {
+                display: block;
             }
 
             .main-content {
                 margin-left: 0;
-                padding: 20px;
+                padding: 15px;
+                width: 100%;
             }
 
             .admin-header {
                 flex-direction: column;
                 gap: 15px;
+                padding: 20px;
+            }
+            
+            .header-left-container {
+                display: flex;
+                align-items: center;
+                width: 100%;
+            }
+
+            .admin-header-right {
+                width: 100%;
+                justify-content: space-between;
             }
 
             .stats-grid {
@@ -359,23 +411,34 @@
             }
 
             .sidebar-menu {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
+                display: block;
             }
 
             .sidebar-menu li {
-                margin-bottom: 0;
-                flex: 1;
-                min-width: 150px;
+                margin-bottom: 10px;
+            }
+            
+            /* Table responsiveness */
+            .table-card {
+                overflow-x: auto;
+            }
+            
+            table {
+                min-width: 600px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Overlay -->
+    <div class="sidebar-overlay"></div>
+
     <!-- Sidebar -->
     <aside class="sidebar">
-        <div class="sidebar-logo">📊 TaskFlow Admin</div>
+        <div class="sidebar-logo">
+            📊 TaskFlow Admin
+            <button class="mobile-sidebar-toggle" style="float: right; color: white; font-size: 20px;">✕</button>
+        </div>
         <ul class="sidebar-menu">
             <li><a href="#dashboard" class="active">Dashboard</a></li>
             <li><a href="#projects">Projects</a></li>
@@ -392,9 +455,12 @@
     <div class="main-content">
         <!-- Header -->
         <div class="admin-header">
-            <div>
-                <h1>Dashboard</h1>
-                <p style="color: #6b7280; font-size: 14px; margin-top: 5px;">Welcome back, Admin</p>
+            <div class="header-left-container">
+                <button class="mobile-sidebar-toggle">☰</button>
+                <div>
+                    <h1>Dashboard</h1>
+                    <p style="color: #6b7280; font-size: 14px; margin-top: 5px;">Welcome back, Admin</p>
+                </div>
             </div>
             <div class="admin-header-right">
                 <select class="date-filter">
@@ -1116,6 +1182,34 @@
             showSection(currentHash);
         });
 
+        // Mobile Sidebar Toggle
+        const mobileSidebarToggle = document.querySelectorAll('.mobile-sidebar-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.sidebar-overlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        mobileSidebarToggle.forEach(btn => {
+            btn.addEventListener('click', toggleSidebar);
+        });
+
+        overlay.addEventListener('click', toggleSidebar);
+
+        // Close sidebar when clicking a link on mobile
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
 
     </script>
 </body>
