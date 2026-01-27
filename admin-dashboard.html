@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - TaskFlow</title>
+    <title>Admin Dashboard - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,16 +11,39 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --sidebar-bg: #1f2937;
+            --primary-color: #0ea5e9;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --sidebar-bg: #0f172a;
+            --primary-color: #38bdf8;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* Sidebar */
         .sidebar {
             width: 260px;
-            background-color: #1f2937;
+            background-color: var(--sidebar-bg);
             color: white;
             min-height: 100vh;
             position: fixed;
@@ -28,12 +51,13 @@
             top: 0;
             padding: 20px;
             overflow-y: auto;
+            transition: background-color 0.3s;
         }
 
         .sidebar-logo {
             font-size: 20px;
             font-weight: 700;
-            color: #0ea5e9;
+            color: var(--primary-color);
             margin-bottom: 40px;
             padding-bottom: 20px;
             border-bottom: 1px solid #374151;
@@ -59,7 +83,7 @@
 
         .sidebar-menu a:hover,
         .sidebar-menu a.active {
-            background-color: #0ea5e9;
+            background-color: var(--primary-color);
             color: white;
         }
 
@@ -75,16 +99,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 20px 30px;
             border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .admin-header h1 {
             font-size: 28px;
-            color: #1f2937;
+            color: var(--text-heading);
         }
 
         body.dark-mode .admin-header h1 {
@@ -99,11 +124,12 @@
 
         .date-filter {
             padding: 10px 15px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             font-size: 14px;
             cursor: pointer;
-            background-color: white;
+            background-color: var(--bg-card);
+            color: var(--text-main);
         }
 
         .user-profile {
@@ -117,7 +143,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #0ea5e9;
+            background-color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -134,12 +160,12 @@
         }
 
         .stat-card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
-            border-left: 4px solid #0ea5e9;
+            border-left: 4px solid var(--primary-color);
         }
 
         .stat-card:hover {
@@ -148,7 +174,7 @@
         }
 
         .stat-card.blue {
-            border-left-color: #0ea5e9;
+            border-left-color: var(--primary-color);
         }
 
         .stat-card.green {
@@ -174,7 +200,7 @@
 
         .stat-label {
             font-size: 14px;
-            color: #6b7280;
+            color: var(--text-secondary);
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -183,7 +209,7 @@
         .stat-value {
             font-size: 32px;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 10px;
         }
 
@@ -205,7 +231,7 @@
         }
 
         .chart-card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -214,24 +240,24 @@
         .chart-card h3 {
             font-size: 16px;
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
         }
 
         .chart-placeholder {
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            background: var(--bg-body);
             height: 300px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #9ca3af;
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
         /* Tables */
         .table-card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -241,7 +267,7 @@
         .table-card h3 {
             font-size: 16px;
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
         }
 
@@ -251,8 +277,8 @@
         }
 
         table thead {
-            background-color: #f9fafb;
-            border-bottom: 2px solid #e5e7eb;
+            background-color: var(--bg-body);
+            border-bottom: 2px solid var(--border-color);
         }
 
         table th {
@@ -260,20 +286,20 @@
             text-align: left;
             font-size: 13px;
             font-weight: 600;
-            color: #6b7280;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         table td {
             padding: 15px;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid var(--border-color);
             font-size: 14px;
-            color: #374151;
+            color: var(--text-main);
         }
 
         table tbody tr:hover {
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
         }
 
         .status-badge {
@@ -309,7 +335,7 @@
         }
 
         .section-content {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -319,12 +345,12 @@
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: #6b7280;
+            color: var(--text-secondary);
         }
 
         .empty-state h2 {
             font-size: 24px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 10px;
         }
 
@@ -337,7 +363,7 @@
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-right: 15px;
         }
 
@@ -351,6 +377,49 @@
             height: 100%;
             background: rgba(0,0,0,0.5);
             z-index: 999;
+        }
+
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .sidebar {
+            left: auto;
+            right: 0;
+        }
+        [dir="rtl"] .main-content {
+            margin-left: 0;
+            margin-right: 260px;
+        }
+        [dir="rtl"] .stat-card {
+            border-left: none;
+            border-right: 4px solid var(--primary-color);
+        }
+        [dir="rtl"] table th {
+            text-align: right;
         }
 
         /* Responsive */
@@ -381,6 +450,7 @@
 
             .main-content {
                 margin-left: 0;
+                margin-right: 0;
                 padding: 15px;
                 width: 100%;
             }
@@ -436,7 +506,7 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <div class="sidebar-logo">
-            📊 TaskFlow Admin
+            📊 Mo_nassar Admin
             <button class="mobile-sidebar-toggle" style="float: right; color: white; font-size: 20px;">✕</button>
         </div>
         <ul class="sidebar-menu">
@@ -459,10 +529,14 @@
                 <button class="mobile-sidebar-toggle">☰</button>
                 <div>
                     <h1>Dashboard</h1>
-                    <p style="color: #6b7280; font-size: 14px; margin-top: 5px;">Welcome back, Admin</p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 5px;">Welcome back, Admin</p>
                 </div>
             </div>
             <div class="admin-header-right">
+                <div class="controls">
+                    <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                    <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+                </div>
                 <select class="date-filter">
                     <option>Last 30 Days</option>
                     <option>Last 90 Days</option>
@@ -658,7 +732,7 @@
         <!-- Projects Section -->
         <div id="projects" class="section">
             <div class="section-content">
-                <h2 style="font-size: 24px; margin-bottom: 20px; color: #1f2937;">All Projects</h2>
+                <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-heading);">All Projects</h2>
                 <table>
                     <thead>
                         <tr>
@@ -735,7 +809,7 @@
         <!-- Accounts Section -->
         <div id="accounts" class="section">
             <div class="section-content">
-                <h2 style="font-size: 24px; margin-bottom: 20px; color: #1f2937;">All Accounts</h2>
+                <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-heading);">All Accounts</h2>
                 <table>
                     <thead>
                         <tr>
@@ -804,7 +878,7 @@
         <!-- Users Section -->
         <div id="users" class="section">
             <div class="section-content">
-                <h2 style="font-size: 24px; margin-bottom: 20px; color: #1f2937;">All Users</h2>
+                <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-heading);">All Users</h2>
                 <table>
                     <thead>
                         <tr>
@@ -865,7 +939,7 @@
         <!-- Analytics Section -->
         <div id="analytics" class="section">
             <div class="section-content">
-                <h2 style="font-size: 24px; margin-bottom: 30px; color: #1f2937;">Analytics</h2>
+                <h2 style="font-size: 24px; margin-bottom: 30px; color: var(--text-heading);">Analytics</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     <div class="chart-card">
                         <h3>Page Views (Last 30 Days)</h3>
@@ -890,7 +964,7 @@
         <!-- Billing Section -->
         <div id="billing" class="section">
             <div class="section-content">
-                <h2 style="font-size: 24px; margin-bottom: 20px; color: #1f2937;">Billing & Payments</h2>
+                <h2 style="font-size: 24px; margin-bottom: 20px; color: var(--text-heading);">Billing & Payments</h2>
                 <table>
                     <thead>
                         <tr>
@@ -909,7 +983,7 @@
                             <td>$2,995</td>
                             <td>Jan 5</td>
                             <td><span class="status-badge status-active">Paid</span></td>
-                            <td><a href="#" style="color: #0ea5e9;">View Invoice</a></td>
+                            <td><a href="#" style="color: var(--primary-color);">View Invoice</a></td>
                         </tr>
                         <tr>
                             <td>Digital Ventures</td>
@@ -917,7 +991,7 @@
                             <td>$3,495</td>
                             <td>Jan 10</td>
                             <td><span class="status-badge status-active">Paid</span></td>
-                            <td><a href="#" style="color: #0ea5e9;">View Invoice</a></td>
+                            <td><a href="#" style="color: var(--primary-color);">View Invoice</a></td>
                         </tr>
                         <tr>
                             <td>Nexus Solutions</td>
@@ -925,7 +999,7 @@
                             <td>$1,995</td>
                             <td>Jan 8</td>
                             <td><span class="status-badge status-active">Paid</span></td>
-                            <td><a href="#" style="color: #0ea5e9;">View Invoice</a></td>
+                            <td><a href="#" style="color: var(--primary-color);">View Invoice</a></td>
                         </tr>
                         <tr>
                             <td>CloudSync</td>
@@ -933,7 +1007,7 @@
                             <td>$995</td>
                             <td>Jan 15</td>
                             <td><span class="status-badge status-pending">Pending</span></td>
-                            <td><a href="#" style="color: #0ea5e9;">View Invoice</a></td>
+                            <td><a href="#" style="color: var(--primary-color);">View Invoice</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -943,30 +1017,30 @@
         <!-- Settings Section -->
         <div id="settings" class="section">
             <div class="section-content">
-                <h2 style="font-size: 24px; margin-bottom: 30px; color: #1f2937;">Settings</h2>
+                <h2 style="font-size: 24px; margin-bottom: 30px; color: var(--text-heading);">Settings</h2>
                 <div style="max-width: 600px;">
-                    <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e5e7eb;">
-                        <h3 style="font-size: 18px; color: #1f2937; margin-bottom: 10px;">General Settings</h3>
-                        <label style="display: block; margin: 15px 0; color: #374151;">
+                    <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                        <h3 style="font-size: 18px; color: var(--text-heading); margin-bottom: 10px;">General Settings</h3>
+                        <label style="display: block; margin: 15px 0; color: var(--text-main);">
                             <input type="checkbox" checked> Enable Notifications
                         </label>
-                        <label style="display: block; margin: 15px 0; color: #374151;">
+                        <label style="display: block; margin: 15px 0; color: var(--text-main);">
                             <input type="checkbox" checked> Email Reports
                         </label>
                     </div>
 
-                    <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #e5e7eb;">
-                        <h3 style="font-size: 18px; color: #1f2937; margin-bottom: 10px;">Security</h3>
-                        <label style="display: block; margin: 15px 0; color: #374151;">
+                    <div style="margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+                        <h3 style="font-size: 18px; color: var(--text-heading); margin-bottom: 10px;">Security</h3>
+                        <label style="display: block; margin: 15px 0; color: var(--text-main);">
                             <input type="checkbox" checked> Two-Factor Authentication
                         </label>
-                        <label style="display: block; margin: 15px 0; color: #374151;">
+                        <label style="display: block; margin: 15px 0; color: var(--text-main);">
                             <input type="checkbox" checked> Login Alerts
                         </label>
                     </div>
 
                     <div style="margin-bottom: 30px;">
-                        <h3 style="font-size: 18px; color: #1f2937; margin-bottom: 10px;">Account</h3>
+                        <h3 style="font-size: 18px; color: var(--text-heading); margin-bottom: 10px;">Account</h3>
                         <button style="padding: 10px 20px; background-color: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;">Reset Password</button>
                     </div>
                 </div>
@@ -975,6 +1049,9 @@
     </div>
 
     <script>
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
         // Sample data for different date ranges
         const dataByPeriod = {
             '30days': {
@@ -1080,6 +1157,8 @@
 
         // Initialize dashboard
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             // Default to 30 days on load
             document.querySelector('.date-filter').value = 'Last 30 Days';
             updateDashboardData('30days');
@@ -1211,6 +1290,28 @@
             });
         });
 
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+        }
     </script>
 </body>
 </html>

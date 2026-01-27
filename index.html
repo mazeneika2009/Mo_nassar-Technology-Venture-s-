@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow - Manage Projects Smarter, Not Harder</title>
+    <title>Mo_nassar - Manage Projects Smarter, Not Harder</title>
     <style>
         * {
             margin: 0;
@@ -11,11 +11,34 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #38bdf8;
+            --primary-hover: #0ea5e9;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -26,12 +49,13 @@
 
         /* Header/Nav */
         header {
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -44,20 +68,20 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: #0ea5e9;
+            color: var(--primary-color);
             z-index: 101;
         }
 
         nav a {
             margin-left: 30px;
             text-decoration: none;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 14px;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #6366f1;
+            color: var(--primary-color);
         }
 
         .mobile-menu-btn {
@@ -80,7 +104,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            background: var(--primary-color);
             color: white;
             padding: 100px 0;
             text-align: center;
@@ -105,8 +129,8 @@
 
         .cta-button {
             display: inline-block;
-            background-color: #fff;
-            color: #667eea;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
             padding: 16px 40px;
             border-radius: 8px;
             text-decoration: none;
@@ -143,19 +167,20 @@
             font-weight: 700;
             margin-bottom: 50px;
             text-align: center;
-            color: #1f2937;
+            color: var(--text-heading);
         }
 
         section h3 {
             font-size: 20px;
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 15px;
         }
 
         /* Agitation Section */
         .agitation {
-            background-color: #fff;
+            background-color: var(--bg-card);
+            transition: background-color 0.3s;
         }
 
         .pain-points {
@@ -165,7 +190,7 @@
         }
 
         .pain-point {
-            background-color: #f3f4f6;
+            background-color: var(--bg-body);
             padding: 30px;
             border-radius: 12px;
             border-left: 4px solid #ef4444;
@@ -173,13 +198,14 @@
 
         .pain-point p {
             font-size: 16px;
-            color: #555;
+            color: var(--text-secondary);
             line-height: 1.8;
         }
 
         /* Solution Section */
         .solution {
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
+            transition: background-color 0.3s;
         }
 
         .features-grid {
@@ -189,7 +215,7 @@
         }
 
         .feature-card {
-            background-color: #fff;
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -206,20 +232,21 @@
         }
 
         .feature-card h3 {
-            color: #0ea5e9;
+            color: var(--primary-color);
             margin-bottom: 15px;
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 15px;
             line-height: 1.8;
         }
 
         /* Social Proof Section */
         .social-proof {
-            background-color: #fff;
+            background-color: var(--bg-card);
             text-align: center;
+            transition: background-color 0.3s;
         }
 
         .social-proof h2 {
@@ -227,7 +254,7 @@
         }
 
         .testimonial-placeholder {
-            background-color: #f3f4f6;
+            background-color: var(--bg-body);
             padding: 60px 40px;
             border-radius: 12px;
             margin-bottom: 40px;
@@ -235,14 +262,14 @@
 
         .testimonial-placeholder p {
             font-size: 18px;
-            color: #666;
+            color: var(--text-secondary);
             font-style: italic;
             margin-bottom: 20px;
         }
 
         .testimonial-author {
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
         }
 
         .logos-placeholder {
@@ -254,16 +281,17 @@
         }
 
         .logo-box {
-            background-color: #f3f4f6;
+            background-color: var(--bg-body);
             padding: 30px 50px;
             border-radius: 8px;
-            color: #999;
+            color: var(--text-secondary);
             font-weight: 500;
         }
 
         /* How It Works Section */
         .how-it-works {
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
+            transition: background-color 0.3s;
         }
 
         .steps-container {
@@ -277,7 +305,7 @@
         }
 
         .step-number {
-            background-color: #0ea5e9;
+            background-color: var(--primary-color);
             color: white;
             width: 60px;
             height: 60px;
@@ -291,18 +319,18 @@
         }
 
         .step h3 {
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 15px;
         }
 
         .step p {
-            color: #666;
+            color: var(--text-secondary);
             line-height: 1.8;
         }
 
         /* Pricing/Final CTA Section */
         .final-cta {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            background: var(--primary-color);
             color: white;
             text-align: center;
         }
@@ -356,6 +384,42 @@
             text-decoration: underline;
         }
 
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] nav a {
+            margin-left: 0;
+            margin-right: 30px;
+        }
+        [dir="rtl"] .pain-point {
+            border-left: none;
+            border-right: 4px solid #ef4444;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .mobile-menu-btn {
@@ -368,7 +432,7 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: white;
+                background-color: var(--bg-card);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -522,10 +586,6 @@
 
         .hero h1 {
             animation: fadeInDown 0.8s ease-out 0.2s both;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .hero h2 {
@@ -583,7 +643,7 @@
         .pain-point:hover {
             transform: translateY(-8px) rotateX(-5deg);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            border-left-color: #6366f1;
+            border-left-color: var(--primary-color);
         }
 
         .feature-card {
@@ -685,7 +745,7 @@
 
         .logo-box:hover {
             transform: scale(1.08) translateY(-5px);
-            background-color: #e5e7eb;
+            background-color: var(--border-color);
         }
     </style>
 </head>
@@ -694,18 +754,22 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">TaskFlow</div>
+                <div class="logo" data-i18n="brandName">Mo_nassar</div>
+                <div class="controls">
+                    <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                    <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+                </div>
                 <button class="mobile-menu-btn" aria-label="Toggle menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <nav>
-                    <a href="#features">Features</a>
-                    <a href="#how-it-works">How It Works</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="admin-dashboard.html" style="background-color: #0ea5e9; color: white; padding: 10px 20px; border-radius: 6px; margin-left: 0; font-weight: 600;">Admin</a>
+                    <a href="#features" data-i18n="navFeatures">Features</a>
+                    <a href="#how-it-works" data-i18n="navHow">How It Works</a>
+                    <a href="#pricing" data-i18n="navPricing">Pricing</a>
+                    <a href="contact.html" data-i18n="navContact">Contact</a>
+                    <a href="admin-dashboard.html" style="background-color: var(--primary-color); color: white; padding: 10px 20px; border-radius: 6px; margin-left: 0; font-weight: 600;" data-i18n="navAdmin">Admin</a>
                 </nav>
             </div>
         </div>
@@ -714,14 +778,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Stop Juggling Projects. Start Managing Them.</h1>
-            <h2>Bring your team's chaos into control—streamline workflows, track progress, and hit every deadline with one simple platform.</h2>
+            <h1 data-i18n="heroTitle" style="color: white;">Stop Juggling Projects. Start Managing Them.</h1>
+            <h2 data-i18n="heroSubtitle">Bring your team's chaos into control—streamline workflows, track progress, and hit every deadline with one simple platform.</h2>
             <div>
-                <a href="signup.html" class="cta-button" style="display: inline-block; text-decoration: none;">Start Free Trial (14 Days)</a>
-                <a href="demo.html" class="cta-button secondary" style="text-decoration: none;">See a Demo</a>
+                <a href="signup.html" class="cta-button" style="display: inline-block; text-decoration: none;" data-i18n="btnStart">Start Free Trial (14 Days)</a>
+                <a href="demo.html" class="cta-button secondary" style="text-decoration: none;" data-i18n="btnDemo">See a Demo</a>
             </div>
             <div style="margin-top: 50px;">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=600&fit=crop" alt="Team collaboration" style="border-radius: 12px; box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3); max-width: 100%; height: auto;">
+                <img src="../asset/image/Mo-Nasser.jpeg" alt="Team collaboration" style="border-radius: 12px; box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3); max-width: 75%; height: 50%;">
             </div>
         </div>
     </section>
@@ -729,19 +793,19 @@
     <!-- Agitation Section -->
     <section class="agitation">
         <div class="container">
-            <h2>Your Project Management is Broken. Here's Why.</h2>
+            <h2 data-i18n="agitationTitle">Your Project Management is Broken. Here's Why.</h2>
             <div class="pain-points">
                 <div class="pain-point">
-                    <h3>⏰ Deadlines Keep Getting Missed</h3>
-                    <p>With tasks scattered across email, Slack, and spreadsheets, critical deadlines slip through the cracks. Your team doesn't have a single source of truth.</p>
+                    <h3 data-i18n="pain1Title">⏰ Deadlines Keep Getting Missed</h3>
+                    <p data-i18n="pain1Text">With tasks scattered across email, Slack, and spreadsheets, critical deadlines slip through the cracks. Your team doesn't have a single source of truth.</p>
                 </div>
                 <div class="pain-point">
-                    <h3>💬 Communication is a Nightmare</h3>
-                    <p>Email threads get lost. Slack messages disappear. Updates happen everywhere except where they need to be. Progress stays unclear.</p>
+                    <h3 data-i18n="pain2Title">💬 Communication is a Nightmare</h3>
+                    <p data-i18n="pain2Text">Email threads get lost. Slack messages disappear. Updates happen everywhere except where they need to be. Progress stays unclear.</p>
                 </div>
                 <div class="pain-point">
-                    <h3>❓ Nobody Knows Who's Doing What</h3>
-                    <p>Accountability is fuzzy. It's unclear who owns what task, when deliverables are due, and why projects keep falling behind schedule.</p>
+                    <h3 data-i18n="pain3Title">❓ Nobody Knows Who's Doing What</h3>
+                    <p data-i18n="pain3Text">Accountability is fuzzy. It's unclear who owns what task, when deliverables are due, and why projects keep falling behind schedule.</p>
                 </div>
             </div>
         </div>
@@ -750,27 +814,27 @@
     <!-- Solution Section -->
     <section class="solution" id="features">
         <div class="container">
-            <h2>Everything You Need in One Place</h2>
+            <h2 data-i18n="solutionTitle">Everything You Need in One Place</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3>Visual Timelines Keep Deadlines on Track</h3>
-                    <p>See your entire project at a glance with interactive Gantt charts. Spot bottlenecks instantly. Adjust schedules in seconds. No more surprises.</p>
+                    <h3 data-i18n="feat1Title">Visual Timelines Keep Deadlines on Track</h3>
+                    <p data-i18n="feat1Text">See your entire project at a glance with interactive Gantt charts. Spot bottlenecks instantly. Adjust schedules in seconds. No more surprises.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💬</div>
-                    <h3>Centralized Collaboration That Actually Works</h3>
-                    <p>All team conversations, updates, and decisions live right next to each task. No more hunting through email. Everyone stays on the same page.</p>
+                    <h3 data-i18n="feat2Title">Centralized Collaboration That Actually Works</h3>
+                    <p data-i18n="feat2Text">All team conversations, updates, and decisions live right next to each task. No more hunting through email. Everyone stays on the same page.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">✅</div>
-                    <h3>Real-Time Progress Tracking So Nothing Falls Behind</h3>
-                    <p>Watch your team's progress unfold in real time. Get instant notifications when tasks are blocked or overdue. Stay ahead of problems before they happen.</p>
+                    <h3 data-i18n="feat3Title">Real-Time Progress Tracking So Nothing Falls Behind</h3>
+                    <p data-i18n="feat3Text">Watch your team's progress unfold in real time. Get instant notifications when tasks are blocked or overdue. Stay ahead of problems before they happen.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3>Work from Anywhere, Anytime</h3>
-                    <p>Native apps for mobile and desktop. Sync instantly. Your team stays connected whether they're in the office, at home, or on the road.</p>
+                    <h3 data-i18n="feat4Title">Work from Anywhere, Anytime</h3>
+                    <p data-i18n="feat4Text">Native apps for mobile and desktop. Sync instantly. Your team stays connected whether they're in the office, at home, or on the road.</p>
                 </div>
             </div>
         </div>
@@ -779,29 +843,29 @@
     <!-- Social Proof Section -->
     <section class="social-proof">
         <div class="container">
-            <h2>Trusted by Teams Just Like Yours</h2>
+            <h2 data-i18n="proofTitle">Trusted by Teams Just Like Yours</h2>
             
             <div class="testimonial-placeholder">
-                <p>"TaskFlow completely transformed how our team communicates. We went from chaos to clarity in two weeks. It's the one tool we actually use instead of avoiding."</p>
+                <p data-i18n="test1">"Mo_nassar completely transformed how our team communicates. We went from chaos to clarity in two weeks. It's the one tool we actually use instead of avoiding."</p>
                 <div class="testimonial-author">— Sarah Chen, Product Manager @ TechStartup Inc.</div>
             </div>
 
             <div class="testimonial-placeholder">
-                <p>"We were spending 5 hours a week just trying to figure out what everyone was working on. TaskFlow eliminated that instantly. It paid for itself in the first month."</p>
+                <p data-i18n="test2">"We were spending 5 hours a week just trying to figure out what everyone was working on. Mo_nassar eliminated that instantly. It paid for itself in the first month."</p>
                 <div class="testimonial-author">— Marcus Rodriguez, Founder @ Growth & Co.</div>
             </div>
 
             <div class="testimonial-placeholder">
-                <p>"As a remote team lead managing 12 people across 4 time zones, TaskFlow is the single source of truth we desperately needed. Transparency is finally built in."</p>
+                <p data-i18n="test3">"As a remote team lead managing 12 people across 4 time zones, Mo_nassar is the single source of truth we desperately needed. Transparency is finally built in."</p>
                 <div class="testimonial-author">— Jennifer Liu, Team Lead @ Digital Ventures</div>
             </div>
 
             <div class="testimonial-placeholder">
-                <p>"The setup took 15 minutes. The ROI came in the first week. Our project delivery improved by 34% without adding any headcount."</p>
+                <p data-i18n="test4">"The setup took 15 minutes. The ROI came in the first week. Our project delivery improved by 34% without adding any headcount."</p>
                 <div class="testimonial-author">— David Patel, Operations Director @ Nexus Solutions</div>
             </div>
 
-            <h3 style="margin-top: 60px; margin-bottom: 30px;">Trusted by 5,000+ teams worldwide:</h3>
+            <h3 style="margin-top: 60px; margin-bottom: 30px;" data-i18n="trustedBy">Trusted by 5,000+ teams worldwide:</h3>
             <div class="logos-placeholder">
                 <div class="logo-box">🚀 VentureLab</div>
                 <div class="logo-box">💼 CloudSync</div>
@@ -816,22 +880,22 @@
     <!-- How It Works Section -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <h2>Get Started in 3 Minutes</h2>
+            <h2 data-i18n="howTitle">Get Started in 3 Minutes</h2>
             <div class="steps-container">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Sign Up (Free)</h3>
-                    <p>Create your account in seconds. No credit card needed. No lengthy setup. Just you, your team, and a better way to work.</p>
+                    <h3 data-i18n="step1Title">Sign Up (Free)</h3>
+                    <p data-i18n="step1Text">Create your account in seconds. No credit card needed. No lengthy setup. Just you, your team, and a better way to work.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Add Your Projects</h3>
-                    <p>Invite your team and create your first project. Bulk import tasks from your existing tools if you want, or start fresh with our templates.</p>
+                    <h3 data-i18n="step2Title">Add Your Projects</h3>
+                    <p data-i18n="step2Text">Invite your team and create your first project. Bulk import tasks from your existing tools if you want, or start fresh with our templates.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Start Collaborating</h3>
-                    <p>Assign tasks, set deadlines, and collaborate in real time. Your team immediately starts staying more aligned and getting more done.</p>
+                    <h3 data-i18n="step3Title">Start Collaborating</h3>
+                    <p data-i18n="step3Text">Assign tasks, set deadlines, and collaborate in real time. Your team immediately starts staying more aligned and getting more done.</p>
                 </div>
             </div>
         </div>
@@ -840,13 +904,13 @@
     <!-- Final CTA Section -->
     <section class="final-cta" id="pricing">
         <div class="container">
-            <h2>Join 5,000+ Teams Already Using TaskFlow</h2>
-            <p>Start your 14-day free trial today. Full access to all features. No credit card required. Cancel anytime (but you won't want to).</p>
+            <h2 data-i18n="finalTitle">Join 5,000+ Teams Already Using Mo_nassar</h2>
+            <p data-i18n="finalText">Start your 14-day free trial today. Full access to all features. No credit card required. Cancel anytime (but you won't want to).</p>
             <div class="cta-flex">
-                <a href="signup.html" class="cta-button" style="display: inline-block; text-decoration: none;">Start My Free Trial</a>
+                <a href="signup.html" class="cta-button" style="display: inline-block; text-decoration: none;" data-i18n="btnStartTrial">Start My Free Trial</a>
             </div>
             <div class="trust-message">
-                ✓ <strong>14-day free trial</strong> | ✓ <strong>No credit card</strong> | ✓ <strong>Full feature access</strong>
+                <span data-i18n="trust1">✓ <strong>14-day free trial</strong></span> | <span data-i18n="trust2">✓ <strong>No credit card</strong></span> | <span data-i18n="trust3">✓ <strong>Full feature access</strong></span>
             </div>
         </div>
     </section>
@@ -855,16 +919,19 @@
     <footer>
         <div class="container">
             <p>
-                <a href="#privacy">Privacy Policy</a>
-                <a href="#terms">Terms of Service</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#support">Support</a>
+                <a href="#privacy" data-i18n="linkPrivacy">Privacy Policy</a>
+                <a href="#terms" data-i18n="linkTerms">Terms of Service</a>
+                <a href="#contact" data-i18n="linkContact">Contact Us</a>
+                <a href="#support" data-i18n="linkSupport">Support</a>
             </p>
-            <p style="margin-top: 20px;">&copy; 2026 TaskFlow. All rights reserved.</p>
+            <p style="margin-top: 20px;" data-i18n="copyright">&copy; 2026 Mo_nassar. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
         // Mobile Menu Toggle
         const mobileBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('nav');
@@ -884,6 +951,150 @@
                 document.body.style.overflow = '';
             });
         });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
+        });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar",
+                navFeatures: "Features",
+                navHow: "How It Works",
+                navPricing: "Pricing",
+                navContact: "Contact",
+                navAdmin: "Admin",
+                heroTitle: "Stop Juggling Projects. Start Managing Them.",
+                heroSubtitle: "Bring your team's chaos into control—streamline workflows, track progress, and hit every deadline with one simple platform.",
+                btnStart: "Start Free Trial (14 Days)",
+                btnDemo: "See a Demo",
+                agitationTitle: "Your Project Management is Broken. Here's Why.",
+                pain1Title: "⏰ Deadlines Keep Getting Missed",
+                pain1Text: "With tasks scattered across email, Slack, and spreadsheets, critical deadlines slip through the cracks. Your team doesn't have a single source of truth.",
+                pain2Title: "💬 Communication is a Nightmare",
+                pain2Text: "Email threads get lost. Slack messages disappear. Updates happen everywhere except where they need to be. Progress stays unclear.",
+                pain3Title: "❓ Nobody Knows Who's Doing What",
+                pain3Text: "Accountability is fuzzy. It's unclear who owns what task, when deliverables are due, and why projects keep falling behind schedule.",
+                solutionTitle: "Everything You Need in One Place",
+                feat1Title: "Visual Timelines Keep Deadlines on Track",
+                feat1Text: "See your entire project at a glance with interactive Gantt charts. Spot bottlenecks instantly. Adjust schedules in seconds. No more surprises.",
+                feat2Title: "Centralized Collaboration That Actually Works",
+                feat2Text: "All team conversations, updates, and decisions live right next to each task. No more hunting through email. Everyone stays on the same page.",
+                feat3Title: "Real-Time Progress Tracking So Nothing Falls Behind",
+                feat3Text: "Watch your team's progress unfold in real time. Get instant notifications when tasks are blocked or overdue. Stay ahead of problems before they happen.",
+                feat4Title: "Work from Anywhere, Anytime",
+                feat4Text: "Native apps for mobile and desktop. Sync instantly. Your team stays connected whether they're in the office, at home, or on the road.",
+                proofTitle: "Trusted by Teams Just Like Yours",
+                test1: "\"Mo_nassar completely transformed how our team communicates. We went from chaos to clarity in two weeks. It's the one tool we actually use instead of avoiding.\"",
+                test2: "\"We were spending 5 hours a week just trying to figure out what everyone was working on. Mo_nassar eliminated that instantly. It paid for itself in the first month.\"",
+                test3: "\"As a remote team lead managing 12 people across 4 time zones, Mo_nassar is the single source of truth we desperately needed. Transparency is finally built in.\"",
+                test4: "\"The setup took 15 minutes. The ROI came in the first week. Our project delivery improved by 34% without adding any headcount.\"",
+                trustedBy: "Trusted by 5,000+ teams worldwide:",
+                howTitle: "Get Started in 3 Minutes",
+                step1Title: "Sign Up (Free)",
+                step1Text: "Create your account in seconds. No credit card needed. No lengthy setup. Just you, your team, and a better way to work.",
+                step2Title: "Add Your Projects",
+                step2Text: "Invite your team and create your first project. Bulk import tasks from your existing tools if you want, or start fresh with our templates.",
+                step3Title: "Start Collaborating",
+                step3Text: "Assign tasks, set deadlines, and collaborate in real time. Your team immediately starts staying more aligned and getting more done.",
+                finalTitle: "Join 5,000+ Teams Already Using Mo_nassar",
+                finalText: "Start your 14-day free trial today. Full access to all features. No credit card required. Cancel anytime (but you won't want to).",
+                btnStartTrial: "Start My Free Trial",
+                trust1: "✓ 14-day free trial",
+                trust2: "✓ No credit card",
+                trust3: "✓ Full feature access",
+                linkPrivacy: "Privacy Policy",
+                linkTerms: "Terms of Service",
+                linkContact: "Contact Us",
+                linkSupport: "Support",
+                copyright: "© 2026 Mo_nassar. All rights reserved."
+            },
+            ar: {
+                brandName: "Mo_nassar",
+                navFeatures: "المميزات",
+                navHow: "كيف يعمل",
+                navPricing: "الأسعار",
+                navContact: "تواصل معنا",
+                navAdmin: "الإدارة",
+                heroTitle: "بطل تدوير في المشاريع. ابدأ إدارتها صح.",
+                heroSubtitle: "سيطر على فوضى فريقك—نظم سير العمل، تابع التقدم، وحقق كل المواعيد النهائية بمنصة واحدة بسيطة.",
+                btnStart: "ابدأ التجربة المجانية (14 يوم)",
+                btnDemo: "شوف ديمو",
+                agitationTitle: "إدارة مشاريعك فيها مشكلة. وده السبب.",
+                pain1Title: "⏰ المواعيد النهائية بتفوتك",
+                pain1Text: "مع المهام المتوزعة بين الإيميل، سلاك، والجداول، المواعيد المهمة بتضيع. فريقك معندوش مصدر واحد للحقيقة.",
+                pain2Title: "💬 التواصل كابوس",
+                pain2Text: "الإيميلات بتضيع. رسايل سلاك بتختفي. التحديثات بتحصل في كل حتة إلا المكان الصح. التقدم مش واضح.",
+                pain3Title: "❓ محدش عارف مين بيعمل إيه",
+                pain3Text: "المسؤولية مش واضحة. مش معروف مين ماسك المهمة دي، امتى التسليم، وليه المشاريع بتتأخر.",
+                solutionTitle: "كل اللي محتاجه في مكان واحد",
+                feat1Title: "جداول زمنية مرئية بتظبط المواعيد",
+                feat1Text: "شوف مشروعك بالكامل بلمحة واحدة مع مخططات جانت التفاعلية. اكتشف المشاكل فوراً. عدل الجداول في ثواني.",
+                feat2Title: "تعاون مركزي بيجيب نتيجة",
+                feat2Text: "كل محادثات الفريق، التحديثات، والقرارات موجودة جنب المهمة. مفيش تدوير في الإيميل. الكل على نفس الصفحة.",
+                feat3Title: "تتبع تقدم لحظي عشان مفيش حاجة تقع",
+                feat3Text: "راقب تقدم فريقك لحظة بلحظة. احصل على إشعارات فورية لما المهام تقف أو تتأخر. اسبق المشاكل قبل ما تحصل.",
+                feat4Title: "اشتغل من أي مكان، في أي وقت",
+                feat4Text: "تطبيقات للموبايل والكمبيوتر. مزامنة فورية. فريقك متصل سواء في المكتب، البيت، أو في الطريق.",
+                proofTitle: "فرق زي فريقك بتثق فينا",
+                test1: "\"Mo_nassar غير طريقة تواصل فريقنا تماماً. انتقلنا من الفوضى للوضوح في أسبوعين. دي الأداة الوحيدة اللي بنستخدمها فعلاً.\"",
+                test2: "\"كنا بنضيع 5 ساعات أسبوعياً عشان نعرف مين بيعمل إيه. Mo_nassar لغى ده فوراً. دفع تمنه في أول شهر.\"",
+                test3: "\"كقائدة فريق عن بعد بدير 12 شخص في 4 مناطق زمنية، Mo_nassar هو المصدر الوحيد للحقيقة اللي كنا محتاجينه.\"",
+                test4: "\"الإعداد خد 15 دقيقة. العائد جه في أول أسبوع. تسليم مشاريعنا اتحسن بنسبة 34% من غير ما نزود موظفين.\"",
+                trustedBy: "موثوق من 5,000+ فريق حول العالم:",
+                howTitle: "ابدأ في 3 دقايق",
+                step1Title: "سجل (مجاناً)",
+                step1Text: "أنشئ حسابك في ثواني. مش محتاج بطاقة ائتمان. مفيش إعدادات طويلة. بس أنت، فريقك، وطريقة شغل أحسن.",
+                step2Title: "ضيف مشاريعك",
+                step2Text: "ادعي فريقك وأنشئ أول مشروع. استورد المهام من أدواتك الحالية، أو ابدأ من جديد بقوالبنا.",
+                step3Title: "ابدأ التعاون",
+                step3Text: "عين المهام، حدد المواعيد، وتعاون في الوقت الفعلي. فريقك هيبدأ فوراً يبقى منظم وينجز أكتر.",
+                finalTitle: "انضم لـ 5,000+ فريق بيستخدموا Mo_nassar",
+                finalText: "ابدأ تجربتك المجانية لمدة 14 يوم. وصول كامل لكل المميزات. مش محتاج بطاقة ائتمان. إلغاء في أي وقت.",
+                btnStartTrial: "ابدأ تجربتي المجانية",
+                trust1: "✓ تجربة مجانية 14 يوم",
+                trust2: "✓ مش محتاج بطاقة ائتمان",
+                trust3: "✓ وصول كامل للمميزات",
+                linkPrivacy: "سياسة الخصوصية",
+                linkTerms: "شروط الخدمة",
+                linkContact: "تواصل معنا",
+                linkSupport: "الدعم",
+                copyright: "© 2026 Mo_nassar. جميع الحقوق محفوظة."
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
     </script>
 </body>
 </html>

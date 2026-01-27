@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Your Project - TaskFlow</title>
+    <title>Create Your Project - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,12 +11,43 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --sidebar-bg: #ffffff;
+            --step-bg: #f3f4f6;
+            --step-text: #333;
+            --input-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #818cf8;
+            --primary-hover: #6366f1;
+            --sidebar-bg: #1f2937;
+            --step-bg: #374151;
+            --step-text: #e5e7eb;
+            --input-bg: #374151;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -25,10 +56,11 @@
         }
 
         header {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -52,7 +84,7 @@
         .avatar {
             width: 40px;
             height: 40px;
-            background: #6366f1;
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -69,16 +101,17 @@
         }
 
         .sidebar {
-            background-color: white;
+            background-color: var(--sidebar-bg);
             padding: 30px;
             border-radius: 12px;
             height: fit-content;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .sidebar h2 {
             font-size: 16px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
         }
 
@@ -94,13 +127,14 @@
             gap: 12px;
             padding: 15px;
             border-radius: 8px;
-            background-color: #f3f4f6;
+            background-color: var(--step-bg);
+            color: var(--step-text);
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .progress-step.active {
-            background-color: #6366f1;
+            background-color: var(--primary-color);
             color: white;
         }
 
@@ -117,13 +151,13 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            background-color: white;
-            color: #6366f1;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .progress-step.active .step-number {
-            background-color: white;
-            color: #6366f1;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .progress-step.completed .step-number {
@@ -132,20 +166,21 @@
         }
 
         .form-card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .form-card h1 {
             font-size: 32px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 10px;
         }
 
         .form-card .subtitle {
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 30px;
             font-size: 15px;
         }
@@ -158,23 +193,25 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
         input, textarea, select {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
             font-family: inherit;
         }
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
@@ -192,7 +229,7 @@
 
         .template-card {
             padding: 20px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--border-color);
             border-radius: 8px;
             cursor: pointer;
             text-align: center;
@@ -201,15 +238,15 @@
         }
 
         .template-card:hover {
-            border-color: #6366f1;
-            background-color: #f9fafb;
+            border-color: var(--primary-color);
+            background-color: var(--bg-body);
             transform: translateY(-4px);
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
         }
 
         .template-card.selected {
-            border-color: #6366f1;
-            background-color: #ede9fe;
+            border-color: var(--primary-color);
+            background-color: rgba(99, 102, 241, 0.1);
             box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
 
@@ -219,7 +256,7 @@
             right: 10px;
             width: 24px;
             height: 24px;
-            background-color: #6366f1;
+            background-color: var(--primary-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -244,7 +281,7 @@
 
         .template-name {
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
@@ -282,12 +319,12 @@
         }
 
         .btn-secondary {
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--step-bg);
+            color: var(--text-main);
         }
 
         .btn-secondary:hover {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .checkbox-group {
@@ -467,6 +504,35 @@
             left: 100%;
         }
 
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -495,7 +561,11 @@
         <!-- Header -->
         <header>
             <div class="header-content">
-                <div class="logo">TaskFlow</div>
+                <div class="logo" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+                <div class="controls">
+                    <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                    <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+                </div>
                 <div class="user-profile">
                     <span id="userGreeting">Welcome, User!</span>
                     <div class="avatar" id="userInitials">U</div>
@@ -507,109 +577,109 @@
         <div class="main-content">
             <!-- Sidebar Progress -->
             <div class="sidebar">
-                <h2>Setup Progress</h2>
+                <h2 data-i18n="setupProgress">Setup Progress</h2>
                 <div class="progress-steps">
                     <div class="progress-step completed">
                         <div class="step-number">✓</div>
-                        <span>Create Account</span>
+                        <span data-i18n="step1">Create Account</span>
                     </div>
                     <div class="progress-step active">
                         <div class="step-number">2</div>
-                        <span>Create Project</span>
+                        <span data-i18n="step2">Create Project</span>
                     </div>
                     <div class="progress-step" style="opacity: 0.5; cursor: not-allowed;">
                         <div class="step-number">3</div>
-                        <span>Invite Team</span>
+                        <span data-i18n="step3">Invite Team</span>
                     </div>
                     <div class="progress-step" style="opacity: 0.5; cursor: not-allowed;">
                         <div class="step-number">4</div>
-                        <span>Add Tasks</span>
+                        <span data-i18n="step4">Add Tasks</span>
                     </div>
                 </div>
             </div>
 
             <!-- Form Card -->
             <div class="form-card">
-                <h1 id="pageTitle">Create Your First Project</h1>
-                <p class="subtitle" id="pageSubtitle">Tell us about your project so we can help you get organized</p>
+                <h1 id="pageTitle" data-i18n="heading">Create Your First Project</h1>
+                <p class="subtitle" id="pageSubtitle" data-i18n="subtitle">Tell us about your project so we can help you get organized</p>
 
                 <form>
                     <div class="form-group">
-                        <label for="projectName">Project Name *</label>
-                        <input type="text" id="projectName" name="projectName" placeholder="e.g., Website Redesign, Q1 Product Launch" required>
+                        <label for="projectName" data-i18n="labelProjectName">Project Name *</label>
+                        <input type="text" id="projectName" name="projectName" data-i18n-placeholder="placeholderProjectName" placeholder="e.g., Website Redesign, Q1 Product Launch" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Project Description</label>
-                        <textarea id="description" name="description" placeholder="What is this project about? What are your goals?"></textarea>
+                        <label for="description" data-i18n="labelDescription">Project Description</label>
+                        <textarea id="description" name="description" data-i18n-placeholder="placeholderDescription" placeholder="What is this project about? What are your goals?"></textarea>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="startDate">Start Date</label>
+                            <label for="startDate" data-i18n="labelStartDate">Start Date</label>
                             <input type="date" id="startDate" name="startDate">
                         </div>
                         <div class="form-group">
-                            <label for="endDate">Target End Date</label>
+                            <label for="endDate" data-i18n="labelEndDate">Target End Date</label>
                             <input type="date" id="endDate" name="endDate">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="category">Project Category *</label>
+                        <label for="category" data-i18n="labelCategory">Project Category *</label>
                         <select id="category" name="category" required>
-                            <option value="">Select a category</option>
-                            <option value="product">Product Development</option>
-                            <option value="marketing">Marketing Campaign</option>
-                            <option value="design">Design Project</option>
-                            <option value="engineering">Engineering</option>
-                            <option value="event">Event Planning</option>
-                            <option value="operations">Operations</option>
-                            <option value="other">Other</option>
+                            <option value="" data-i18n="optSelectCategory">Select a category</option>
+                            <option value="product" data-i18n="optProduct">Product Development</option>
+                            <option value="marketing" data-i18n="optMarketing">Marketing Campaign</option>
+                            <option value="design" data-i18n="optDesign">Design Project</option>
+                            <option value="engineering" data-i18n="optEngineering">Engineering</option>
+                            <option value="event" data-i18n="optEvent">Event Planning</option>
+                            <option value="operations" data-i18n="optOperations">Operations</option>
+                            <option value="other" data-i18n="optOther">Other</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Project Template *</label>
-                        <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Choose how you'd like to organize your tasks</p>
+                        <label data-i18n="labelTemplate">Project Template *</label>
+                        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;" data-i18n="templateSub">Choose how you'd like to organize your tasks</p>
                         <input type="hidden" id="selectedTemplate" name="selectedTemplate" value="kanban">
                         <div class="template-options">
                             <div class="template-card selected" data-template="kanban" onclick="selectTemplate(this, 'kanban')">
                                 <div class="template-checkmark">✓</div>
                                 <div class="template-icon">📊</div>
-                                <div class="template-name">Kanban Board</div>
+                                <div class="template-name" data-i18n="tmplKanban">Kanban Board</div>
                             </div>
                             <div class="template-card" data-template="timeline" onclick="selectTemplate(this, 'timeline')">
                                 <div class="template-checkmark">✓</div>
                                 <div class="template-icon">📈</div>
-                                <div class="template-name">Timeline/Gantt</div>
+                                <div class="template-name" data-i18n="tmplTimeline">Timeline/Gantt</div>
                             </div>
                             <div class="template-card" data-template="checklist" onclick="selectTemplate(this, 'checklist')">
                                 <div class="template-checkmark">✓</div>
                                 <div class="template-icon">✓</div>
-                                <div class="template-name">Checklist</div>
+                                <div class="template-name" data-i18n="tmplChecklist">Checklist</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="privacy">Privacy Level *</label>
+                        <label for="privacy" data-i18n="labelPrivacy">Privacy Level *</label>
                         <select id="privacy" name="privacy" required>
-                            <option value="">Select privacy level</option>
-                            <option value="private">Private (Only invitees)</option>
-                            <option value="team">Team (Everyone in your workspace)</option>
-                            <option value="public">Public (Anyone with link)</option>
+                            <option value="" data-i18n="optSelectPrivacy">Select privacy level</option>
+                            <option value="private" data-i18n="optPrivate">Private (Only invitees)</option>
+                            <option value="team" data-i18n="optTeam">Team (Everyone in your workspace)</option>
+                            <option value="public" data-i18n="optPublic">Public (Anyone with link)</option>
                         </select>
                     </div>
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="importTasks" name="importTasks">
-                        <label for="importTasks" class="checkbox-label">I want to import tasks from another tool</label>
+                        <label for="importTasks" class="checkbox-label" data-i18n="labelImport">I want to import tasks from another tool</label>
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn btn-secondary" onclick="navigateTo('dashboard.html')">Back</button>
-                        <button type="submit" class="btn btn-primary" id="submitBtn" onclick="handleProjectSubmit(event)">Create Project</button>
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('dashboard.html')" data-i18n="btnBack">Back</button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn" onclick="handleProjectSubmit(event)" data-i18n="btnCreate">Create Project</button>
                     </div>
                 </form>
             </div>
@@ -618,6 +688,8 @@
 
     <script>
         let selectedTemplate = 'kanban';
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
 
         function navigateTo(page) {
             window.location.href = page;
@@ -650,17 +722,17 @@
             const privacy = document.getElementById('privacy').value;
             
             if (!projectName) {
-                alert('Please enter a project name');
+                alert(translations[currentLang].alertName);
                 return;
             }
             
             if (!category) {
-                alert('Please select a project category');
+                alert(translations[currentLang].alertCategory);
                 return;
             }
 
             if (!privacy) {
-                alert('Please select a privacy level');
+                alert(translations[currentLang].alertPrivacy);
                 return;
             }
             
@@ -679,7 +751,7 @@
             }
             
             const isEditing = localStorage.getItem('isEditingProject') === 'true';
-            const message = isEditing ? 'Project updated successfully! Going back to dashboard...' : 'Project created with ' + selectedTemplate + ' template! Moving to invite your team...';
+            const message = isEditing ? translations[currentLang].alertUpdated : translations[currentLang].alertCreated;
             alert(message);
             
             // Clear editing flag
@@ -699,7 +771,7 @@
             const userLastName = localStorage.getItem('userLastName') || '';
             const userInitials = (userName.charAt(0) + userLastName.charAt(0)).toUpperCase();
             
-            document.getElementById('userGreeting').textContent = 'Welcome, ' + userName + '!';
+            document.getElementById('userGreeting').textContent = translations[currentLang].greeting + userName + '!';
             document.getElementById('userInitials').textContent = userInitials;
         }
 
@@ -738,14 +810,16 @@
                 }
                 
                 // Update page title and button text for editing mode
-                document.getElementById('pageTitle').textContent = 'Edit Your Project';
-                document.getElementById('pageSubtitle').textContent = 'Update your project information';
-                document.getElementById('submitBtn').textContent = 'Update Project';
+                document.getElementById('pageTitle').textContent = translations[currentLang].editTitle;
+                document.getElementById('pageSubtitle').textContent = translations[currentLang].editSubtitle;
+                document.getElementById('submitBtn').textContent = translations[currentLang].btnUpdate;
             }
         }
 
         // Initialize template selection on page load
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             // Load user data
             loadUserData();
             
@@ -758,6 +832,143 @@
                 initialCard.classList.add('selected');
             }
         });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                setupProgress: "Setup Progress",
+                step1: "Create Account",
+                step2: "Create Project",
+                step3: "Invite Team",
+                step4: "Add Tasks",
+                heading: "Create Your First Project",
+                subtitle: "Tell us about your project so we can help you get organized",
+                labelProjectName: "Project Name *",
+                placeholderProjectName: "e.g., Website Redesign, Q1 Product Launch",
+                labelDescription: "Project Description",
+                placeholderDescription: "What is this project about? What are your goals?",
+                labelStartDate: "Start Date",
+                labelEndDate: "Target End Date",
+                labelCategory: "Project Category *",
+                optSelectCategory: "Select a category",
+                optProduct: "Product Development",
+                optMarketing: "Marketing Campaign",
+                optDesign: "Design Project",
+                optEngineering: "Engineering",
+                optEvent: "Event Planning",
+                optOperations: "Operations",
+                optOther: "Other",
+                labelTemplate: "Project Template *",
+                templateSub: "Choose how you'd like to organize your tasks",
+                tmplKanban: "Kanban Board",
+                tmplTimeline: "Timeline/Gantt",
+                tmplChecklist: "Checklist",
+                labelPrivacy: "Privacy Level *",
+                optSelectPrivacy: "Select privacy level",
+                optPrivate: "Private (Only invitees)",
+                optTeam: "Team (Everyone in your workspace)",
+                optPublic: "Public (Anyone with link)",
+                labelImport: "I want to import tasks from another tool",
+                btnBack: "Back",
+                btnCreate: "Create Project",
+                alertName: "Please enter a project name",
+                alertCategory: "Please select a project category",
+                alertPrivacy: "Please select a privacy level",
+                alertUpdated: "Project updated successfully! Going back to dashboard...",
+                alertCreated: "Project created! Moving to invite your team...",
+                greeting: "Welcome, ",
+                editTitle: "Edit Your Project",
+                editSubtitle: "Update your project information",
+                btnUpdate: "Update Project"
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                setupProgress: "خطوات الإعداد",
+                step1: "إنشاء حساب",
+                step2: "إنشاء مشروع",
+                step3: "دعوة الفريق",
+                step4: "إضافة مهام",
+                heading: "ابدأ أول مشروع ليك",
+                subtitle: "قولنا تفاصيل مشروعك عشان نساعدك تنظم شغلك",
+                labelProjectName: "اسم المشروع *",
+                placeholderProjectName: "مثال: تصميم موقع، إطلاق منتج",
+                labelDescription: "وصف المشروع",
+                placeholderDescription: "المشروع عبارة عن إيه؟ وإيه أهدافك؟",
+                labelStartDate: "تاريخ البداية",
+                labelEndDate: "تاريخ النهاية",
+                labelCategory: "التصنيف *",
+                optSelectCategory: "اختار تصنيف",
+                optProduct: "تطوير منتج",
+                optMarketing: "حملة تسويق",
+                optDesign: "تصميم",
+                optEngineering: "هندسة",
+                optEvent: "تخطيط حدث",
+                optOperations: "عمليات",
+                optOther: "أخرى",
+                labelTemplate: "قالب المشروع *",
+                templateSub: "اختار الطريقة اللي تحب تنظم بيها مهامك",
+                tmplKanban: "لوحة كانبان",
+                tmplTimeline: "جدول زمني",
+                tmplChecklist: "قائمة مهام",
+                labelPrivacy: "الخصوصية *",
+                optSelectPrivacy: "اختار مستوى الخصوصية",
+                optPrivate: "خاص (للمدعوين بس)",
+                optTeam: "فريق (كل اللي في مساحة العمل)",
+                optPublic: "عام (أي حد معاه اللينك)",
+                labelImport: "عايز استورد مهام من أداة تانية",
+                btnBack: "رجوع",
+                btnCreate: "إنشاء المشروع",
+                alertName: "من فضلك دخل اسم المشروع",
+                alertCategory: "من فضلك اختار تصنيف المشروع",
+                alertPrivacy: "من فضلك اختار مستوى الخصوصية",
+                alertUpdated: "تم تحديث المشروع! راجعين للوحة التحكم...",
+                alertCreated: "تم إنشاء المشروع! يلا ندعي الفريق...",
+                greeting: "أهلاً، ",
+                editTitle: "تعديل المشروع",
+                editSubtitle: "حدث بيانات مشروعك",
+                btnUpdate: "تحديث المشروع"
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            loadUserData();
+        }
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - TaskFlow</title>
+    <title>Sign Up - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,38 +11,60 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --input-bg: #ffffff;
+            --primary-color: #0ea5e9;
+        }
+
+        [data-theme="dark"] {
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --input-bg: #374151;
+            --primary-color: #38bdf8;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-main);
             background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            transition: color 0.3s;
         }
 
         .signup-container {
-            background-color: white;
+            background-color: var(--bg-card);
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             max-width: 450px;
             width: 100%;
             padding: 50px;
+            transition: background-color 0.3s;
         }
 
         .logo {
             font-size: 28px;
             font-weight: 700;
-            color: #0ea5e9;
+            color: var(--primary-color);
             margin-bottom: 10px;
             text-align: center;
         }
 
         .tagline {
             text-align: center;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 40px;
             font-size: 14px;
         }
@@ -50,14 +72,14 @@
         h1 {
             font-size: 32px;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 10px;
             text-align: center;
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 30px;
             font-size: 14px;
         }
@@ -70,23 +92,25 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
-        input {
+        input, select {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
             font-family: inherit;
         }
 
-        input:focus {
+        input:focus, select:focus {
             outline: none;
-            border-color: #0ea5e9;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
         }
 
@@ -115,7 +139,7 @@
         }
 
         .checkbox-group a {
-            color: #6366f1;
+            color: var(--primary-color);
             text-decoration: none;
         }
 
@@ -126,7 +150,7 @@
         .signup-button {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 8px;
@@ -146,11 +170,11 @@
             text-align: center;
             margin-top: 20px;
             font-size: 14px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .login-link a {
-            color: #0ea5e9;
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
         }
@@ -171,7 +195,7 @@
             content: '';
             flex: 1;
             height: 1px;
-            background-color: #e5e7eb;
+            background-color: var(--border-color);
         }
 
         .divider span {
@@ -264,7 +288,7 @@
 
         h1 {
             animation: fadeInDown 0.6s ease-out 0.2s both;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-color);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -352,19 +376,19 @@
 
         .social-btn {
             padding: 12px;
-            border: 1px solid #e5e7eb;
-            background-color: white;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
             border-radius: 8px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 500;
-            color: #333;
+            color: var(--text-main);
             transition: all 0.3s;
         }
 
         .social-btn:hover {
-            border-color: #6366f1;
-            background-color: #f3f4f6;
+            border-color: var(--primary-color);
+            background-color: var(--bg-body);
         }
 
         .trust-badge {
@@ -373,7 +397,7 @@
             gap: 20px;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--border-color);
             font-size: 12px;
             color: #999;
         }
@@ -382,6 +406,41 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        /* Controls for Theme and Lang */
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+        [dir="rtl"] .controls {
+            right: auto;
+            left: 20px;
+        }
+        .btn-icon {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .checkbox-group input {
+            margin-right: 0;
+            margin-left: 10px;
         }
 
         @media (max-width: 480px) {
@@ -400,44 +459,49 @@
     </style>
 </head>
 <body>
+    <div class="controls">
+        <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+        <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+    </div>
+
     <div class="signup-container">
-        <div class="logo">TaskFlow</div>
-        <div class="tagline">Smart Project Management</div>
+        <div class="logo" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+        <div class="tagline" data-i18n="tagline">Smart Project Management</div>
         
-        <h1>Join TaskFlow</h1>
-        <p class="subtitle">Start your 14-day free trial today</p>
+        <h1 data-i18n="joinTitle">Join Mo_nassar</h1>
+        <p class="subtitle" data-i18n="joinSubtitle">Start your 14-day free trial today</p>
 
         <form id="signupForm">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="Sarah" required>
+                    <label for="firstName" data-i18n="labelFirstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" data-i18n-placeholder="phFirstName" placeholder="Sarah" required>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Chen" required>
+                    <label for="lastName" data-i18n="labelLastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" data-i18n-placeholder="phLastName" placeholder="Chen" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="email">Work Email</label>
-                <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                <label for="email" data-i18n="labelEmail">Work Email</label>
+                <input type="email" id="email" name="email" data-i18n-placeholder="phEmail" placeholder="you@company.com" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Min. 8 characters" required>
+                <label for="password" data-i18n="labelPassword">Password</label>
+                <input type="password" id="password" name="password" data-i18n-placeholder="phPassword" placeholder="Min. 8 characters" required>
             </div>
 
             <div class="form-group">
-                <label for="company">Company Name</label>
-                <input type="text" id="company" name="company" placeholder="Your Company" required>
+                <label for="company" data-i18n="labelCompany">Company Name</label>
+                <input type="text" id="company" name="company" data-i18n-placeholder="phCompany" placeholder="Your Company" required>
             </div>
 
             <div class="form-group">
-                <label for="teamSize">Team Size</label>
-                <select id="teamSize" name="teamSize" style="width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; font-family: inherit;" required>
-                    <option value="">Select team size</option>
+                <label for="teamSize" data-i18n="labelTeamSize">Team Size</label>
+                <select id="teamSize" name="teamSize" required>
+                    <option value="" data-i18n="optSelect">Select team size</option>
                     <option value="1-5">1-5 people</option>
                     <option value="6-10">6-10 people</option>
                     <option value="11-25">11-25 people</option>
@@ -448,29 +512,32 @@
 
             <div class="checkbox-group">
                 <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                <label for="terms" data-i18n="labelTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
             </div>
 
             <div class="checkbox-group">
                 <input type="checkbox" id="updates" name="updates">
-                <label for="updates">Send me tips and product updates</label>
+                <label for="updates" data-i18n="labelUpdates">Send me tips and product updates</label>
             </div>
 
-            <button type="submit" class="signup-button" onclick="handleSignupSubmit(event)">Create Free Account</button>
+            <button type="submit" class="signup-button" onclick="handleSignupSubmit(event)" data-i18n="btnCreate">Create Free Account</button>
 
             <p class="login-link">
-                Already have an account? <a href="#">Sign In</a>
+                <span data-i18n="alreadyAccount">Already have an account?</span> <a href="#" data-i18n="signIn">Sign In</a>
             </p>
         </form>
 
         <div class="trust-badge">
-            <span>✓ No credit card required</span>
-            <span>✓ 14-day free trial</span>
-            <span>✓ Cancel anytime</span>
+            <span data-i18n="trust1">✓ No credit card required</span>
+            <span data-i18n="trust2">✓ 14-day free trial</span>
+            <span data-i18n="trust3">✓ Cancel anytime</span>
         </div>
     </div>
 
     <script>
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
         // Initialize Google Sign-In
         window.onload = function() {
             google.accounts.id.initialize({
@@ -478,6 +545,8 @@
                 callback: handleCredentialResponse,
                 auto_select: false
             });
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
         };
 
         function handleSignupSubmit(event) {
@@ -493,31 +562,31 @@
             
             // Validation
             if (!firstName) {
-                alert('Please enter your first name');
+                alert(translations[currentLang].alertFirst);
                 return;
             }
             if (!lastName) {
-                alert('Please enter your last name');
+                alert(translations[currentLang].alertLast);
                 return;
             }
             if (!email) {
-                alert('Please enter your email');
+                alert(translations[currentLang].alertEmail);
                 return;
             }
             if (password.length < 8) {
-                alert('Password must be at least 8 characters');
+                alert(translations[currentLang].alertPass);
                 return;
             }
             if (!company) {
-                alert('Please enter your company name');
+                alert(translations[currentLang].alertCompany);
                 return;
             }
             if (!teamSize) {
-                alert('Please select your team size');
+                alert(translations[currentLang].alertTeam);
                 return;
             }
             if (!terms) {
-                alert('You must agree to the Terms of Service');
+                alert(translations[currentLang].alertTerms);
                 return;
             }
             
@@ -528,8 +597,117 @@
             localStorage.setItem('userCompany', company);
             localStorage.setItem('userTeamSize', teamSize);
             
-            alert('Account created! Moving to create your project...');
+            alert(translations[currentLang].alertSuccess);
             window.location.href = 'add-project.html';
+        }
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                tagline: "Smart Project Management",
+                joinTitle: "Join Mo_nassar",
+                joinSubtitle: "Start your 14-day free trial today",
+                labelFirstName: "First Name",
+                phFirstName: "Sarah",
+                labelLastName: "Last Name",
+                phLastName: "Chen",
+                labelEmail: "Work Email",
+                phEmail: "you@company.com",
+                labelPassword: "Password",
+                phPassword: "Min. 8 characters",
+                labelCompany: "Company Name",
+                phCompany: "Your Company",
+                labelTeamSize: "Team Size",
+                optSelect: "Select team size",
+                labelTerms: "I agree to the Terms of Service and Privacy Policy",
+                labelUpdates: "Send me tips and product updates",
+                btnCreate: "Create Free Account",
+                alreadyAccount: "Already have an account?",
+                signIn: "Sign In",
+                trust1: "✓ No credit card required",
+                trust2: "✓ 14-day free trial",
+                trust3: "✓ Cancel anytime",
+                alertFirst: "Please enter your first name",
+                alertLast: "Please enter your last name",
+                alertEmail: "Please enter your email",
+                alertPass: "Password must be at least 8 characters",
+                alertCompany: "Please enter your company name",
+                alertTeam: "Please select your team size",
+                alertTerms: "You must agree to the Terms of Service",
+                alertSuccess: "Account created! Moving to create your project..."
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                tagline: "إدارة مشاريع ذكية",
+                joinTitle: "انضم لـ Mo_nassar",
+                joinSubtitle: "ابدأ تجربتك المجانية لمدة 14 يوم",
+                labelFirstName: "الاسم الأول",
+                phFirstName: "سارة",
+                labelLastName: "اسم العائلة",
+                phLastName: "أحمد",
+                labelEmail: "إيميل الشغل",
+                phEmail: "you@company.com",
+                labelPassword: "كلمة السر",
+                phPassword: "8 حروف على الأقل",
+                labelCompany: "اسم الشركة",
+                phCompany: "شركتك",
+                labelTeamSize: "حجم الفريق",
+                optSelect: "اختار حجم الفريق",
+                labelTerms: "أنا موافق على شروط الخدمة وسياسة الخصوصية",
+                labelUpdates: "ابعتلي نصايح وتحديثات المنتج",
+                btnCreate: "إنشاء حساب مجاني",
+                alreadyAccount: "عندك حساب بالفعل؟",
+                signIn: "تسجيل الدخول",
+                trust1: "✓ مش محتاج بطاقة ائتمان",
+                trust2: "✓ تجربة مجانية 14 يوم",
+                trust3: "✓ إلغاء في أي وقت",
+                alertFirst: "من فضلك دخل اسمك الأول",
+                alertLast: "من فضلك دخل اسم العائلة",
+                alertEmail: "من فضلك دخل الإيميل",
+                alertPass: "كلمة السر لازم تكون 8 حروف على الأقل",
+                alertCompany: "من فضلك دخل اسم الشركة",
+                alertTeam: "من فضلك اختار حجم الفريق",
+                alertTerms: "لازم توافق على شروط الخدمة",
+                alertSuccess: "تم إنشاء الحساب! جاري الانتقال لإنشاء المشروع..."
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
         }
     </script>
 </body>

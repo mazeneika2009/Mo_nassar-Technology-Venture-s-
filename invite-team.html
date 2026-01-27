@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invite Team - TaskFlow</title>
+    <title>Invite Team - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,12 +11,43 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --sidebar-bg: #ffffff;
+            --step-bg: #f3f4f6;
+            --step-text: #333;
+            --input-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #818cf8;
+            --primary-hover: #6366f1;
+            --sidebar-bg: #1f2937;
+            --step-bg: #374151;
+            --step-text: #e5e7eb;
+            --input-bg: #374151;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -25,10 +56,11 @@
         }
 
         header {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -52,7 +84,7 @@
         .avatar {
             width: 40px;
             height: 40px;
-            background: #6366f1;
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -69,16 +101,17 @@
         }
 
         .sidebar {
-            background-color: white;
+            background-color: var(--sidebar-bg);
             padding: 30px;
             border-radius: 12px;
             height: fit-content;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .sidebar h2 {
             font-size: 16px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
         }
 
@@ -94,17 +127,18 @@
             gap: 12px;
             padding: 15px;
             border-radius: 8px;
-            background-color: #f3f4f6;
+            background-color: var(--step-bg);
+            color: var(--step-text);
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .progress-step:hover:not(.active):not(.completed) {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .progress-step.active {
-            background-color: #6366f1;
+            background-color: var(--primary-color);
             color: white;
         }
 
@@ -121,13 +155,13 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            background-color: white;
-            color: #6366f1;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .progress-step.active .step-number {
-            background-color: white;
-            color: #6366f1;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .progress-step.completed .step-number {
@@ -136,20 +170,21 @@
         }
 
         .form-card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .form-card h1 {
             font-size: 32px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 10px;
         }
 
         .form-card .subtitle {
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 30px;
             font-size: 15px;
         }
@@ -162,23 +197,25 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
         input, select {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
             font-family: inherit;
         }
 
         input:focus, select:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
@@ -195,19 +232,18 @@
 
         .btn-add {
             padding: 12px 25px;
-            background-color: #f3f4f6;
-            border: 1px solid #e5e7eb;
+            background-color: var(--step-bg);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
-            color: #333;
+            color: var(--text-main);
             transition: all 0.3s;
             align-self: flex-end;
         }
 
         .btn-add:hover {
-            background-color: #e5e7eb;
-            border-color: #d1d5db;
+            opacity: 0.8;
         }
 
         .team-member-list {
@@ -216,7 +252,7 @@
 
         .team-member-list h3 {
             font-size: 16px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 15px;
         }
 
@@ -225,7 +261,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
             border-radius: 8px;
             margin-bottom: 10px;
         }
@@ -256,13 +292,13 @@
 
         .member-email {
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
         .member-role {
             font-size: 12px;
-            color: #999;
+            color: var(--text-secondary);
         }
 
         .remove-btn {
@@ -282,7 +318,7 @@
             width: 150px;
             padding: 8px 12px;
             font-size: 13px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
         }
 
@@ -333,12 +369,12 @@
         }
 
         .btn-secondary {
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--step-bg);
+            color: var(--text-main);
         }
 
         .btn-secondary:hover {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .skip-link {
@@ -347,7 +383,7 @@
         }
 
         .skip-link a {
-            color: #6366f1;
+            color: var(--primary-color);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -561,6 +597,42 @@
             background: #f3f4f6;
         }
 
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .info-box {
+            border-left: none;
+            border-right: 4px solid #3b82f6;
+        }
+        [dir="rtl"] .checkbox-group {
+            gap: 10px;
+        }
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -599,7 +671,11 @@
         <!-- Header -->
         <header>
             <div class="header-content">
-                <div class="logo">TaskFlow</div>
+                <div class="logo" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+                <div class="controls">
+                    <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                    <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+                </div>
                 <div class="user-profile">
                     <span id="userGreeting">Welcome, User!</span>
                     <div class="avatar" id="userInitials">U</div>
@@ -611,42 +687,42 @@
         <div class="main-content">
             <!-- Sidebar Progress -->
             <div class="sidebar">
-                <h2>Setup Progress</h2>
+                <h2 data-i18n="setupProgress">Setup Progress</h2>
                 <div class="progress-steps">
                     <div class="progress-step completed">
                         <div class="step-number">✓</div>
-                        <span>Create Account</span>
+                        <span data-i18n="step1">Create Account</span>
                     </div>
                     <div class="progress-step completed">
                         <div class="step-number">✓</div>
-                        <span>Create Project</span>
+                        <span data-i18n="step2">Create Project</span>
                     </div>
                     <div class="progress-step active">
                         <div class="step-number">3</div>
-                        <span>Invite Team</span>
+                        <span data-i18n="step3">Invite Team</span>
                     </div>
                     <div class="progress-step" style="opacity: 0.5; cursor: not-allowed;">
                         <div class="step-number">4</div>
-                        <span>Add Tasks</span>
+                        <span data-i18n="step4">Add Tasks</span>
                     </div>
                 </div>
             </div>
 
             <!-- Form Card -->
             <div class="form-card">
-                <h1>Invite Your Team</h1>
-                <p class="subtitle">Build collaboration from day one. Add your team members and assign roles</p>
+                <h1 data-i18n="heading">Invite Your Team</h1>
+                <p class="subtitle" data-i18n="subtitle">Build collaboration from day one. Add your team members and assign roles</p>
 
-                <div class="info-box">
+                <div class="info-box" data-i18n="info">
                     💡 Your team members will receive an invite email and can start collaborating immediately after accepting
                 </div>
 
                 <form id="inviteForm">
                     <div class="form-group">
-                        <label for="email">Team Member Email *</label>
+                        <label for="email" data-i18n="labelEmail">Team Member Email *</label>
                         <div class="email-input-group">
-                            <input type="email" id="email" placeholder="teammate@company.com" required>
-                            <button type="button" class="btn-add" onclick="addTeamMember(event)">+ Add Member</button>
+                            <input type="email" id="email" data-i18n-placeholder="placeholderEmail" placeholder="teammate@company.com" required>
+                            <button type="button" class="btn-add" onclick="addTeamMember(event)" data-i18n="btnAdd">+ Add Member</button>
                         </div>
                     </div>
 
@@ -656,16 +732,16 @@
 
                     <div class="checkbox-group">
                         <input type="checkbox" id="sendWelcome" name="sendWelcome" checked>
-                        <label for="sendWelcome" class="checkbox-label">Send welcome email with tips and best practices</label>
+                        <label for="sendWelcome" class="checkbox-label" data-i18n="labelWelcome">Send welcome email with tips and best practices</label>
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn btn-secondary" onclick="navigateTo('add-project.html')">Back</button>
-                        <button type="submit" class="btn btn-primary" onclick="handleInviteSubmit(event)">Continue to Next Step</button>
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('add-project.html')" data-i18n="btnBack">Back</button>
+                        <button type="submit" class="btn btn-primary" onclick="handleInviteSubmit(event)" data-i18n="btnContinue">Continue to Next Step</button>
                     </div>
 
                     <div class="skip-link">
-                        <a href="#" onclick="skipInvite(event)">Skip for now, I'll add team members later</a>
+                        <a href="#" onclick="skipInvite(event)" data-i18n="skipLink">Skip for now, I'll add team members later</a>
                     </div>
                 </form>
             </div>
@@ -674,6 +750,8 @@
 
     <script>
         let teamMembers = [];
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
 
         function addTeamMember(event) {
             event.preventDefault();
@@ -681,17 +759,17 @@
             const email = emailInput.value.trim();
 
             if (!email) {
-                alert('Please enter an email address');
+                alert(translations[currentLang].alertEmail);
                 return;
             }
 
             if (!isValidEmail(email)) {
-                alert('Please enter a valid email address');
+                alert(translations[currentLang].alertValid);
                 return;
             }
 
             if (teamMembers.some(member => member.email === email)) {
-                alert('This email is already added');
+                alert(translations[currentLang].alertExists);
                 return;
             }
 
@@ -726,7 +804,7 @@
                 return;
             }
 
-            let html = '<h3>' + teamMembers.length + ' Team Member' + (teamMembers.length !== 1 ? 's' : '') + ' Added</h3>';
+            let html = '<h3>' + teamMembers.length + ' ' + translations[currentLang].membersAdded + '</h3>';
             
             teamMembers.forEach(member => {
                 const initials = member.email.split('@')[0].substring(0, 2).toUpperCase();
@@ -762,7 +840,7 @@
 
         function skipInvite(event) {
             event.preventDefault();
-            alert('You can always add team members later from the Team Settings!');
+            alert(translations[currentLang].alertSkip);
             
             // Save empty team array to localStorage
             localStorage.setItem('teamMembers', JSON.stringify([]));
@@ -773,14 +851,14 @@
         function handleInviteSubmit(event) {
             event.preventDefault();
             if (teamMembers.length === 0) {
-                alert('Please add at least one team member or skip this step');
+                alert(translations[currentLang].alertEmpty);
                 return;
             }
             
             // Save team members to localStorage
             localStorage.setItem('teamMembers', JSON.stringify(teamMembers));
             
-            alert('Invites sent! Your team will receive emails shortly. Moving to add tasks...');
+            alert(translations[currentLang].alertSent);
             navigateTo('add-tasks.html');
         }
 
@@ -790,12 +868,14 @@
             const userLastName = localStorage.getItem('userLastName') || '';
             const userInitials = (userName.charAt(0) + userLastName.charAt(0)).toUpperCase();
             
-            document.getElementById('userGreeting').textContent = 'Welcome, ' + userName + '!';
+            document.getElementById('userGreeting').textContent = translations[currentLang].greeting + userName + '!';
             document.getElementById('userInitials').textContent = userInitials;
         }
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             loadUserData();
         });
 
@@ -805,6 +885,104 @@
                 addTeamMember(e);
             }
         });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                setupProgress: "Setup Progress",
+                step1: "Create Account",
+                step2: "Create Project",
+                step3: "Invite Team",
+                step4: "Add Tasks",
+                heading: "Invite Your Team",
+                subtitle: "Build collaboration from day one. Add your team members and assign roles",
+                info: "💡 Your team members will receive an invite email and can start collaborating immediately after accepting",
+                labelEmail: "Team Member Email *",
+                placeholderEmail: "teammate@company.com",
+                btnAdd: "+ Add Member",
+                labelWelcome: "Send welcome email with tips and best practices",
+                btnBack: "Back",
+                btnContinue: "Continue to Next Step",
+                skipLink: "Skip for now, I'll add team members later",
+                alertEmail: "Please enter an email address",
+                alertValid: "Please enter a valid email address",
+                alertExists: "This email is already added",
+                alertEmpty: "Please add at least one team member or skip this step",
+                alertSent: "Invites sent! Your team will receive emails shortly. Moving to add tasks...",
+                alertSkip: "You can always add team members later from the Team Settings!",
+                membersAdded: "Team Member(s) Added",
+                greeting: "Welcome, "
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                setupProgress: "خطوات الإعداد",
+                step1: "إنشاء حساب",
+                step2: "إنشاء مشروع",
+                step3: "دعوة الفريق",
+                step4: "إضافة مهام",
+                heading: "ادعي فريقك",
+                subtitle: "ابدأ التعاون من أول يوم. ضيف أعضاء فريقك وحدد أدوارهم",
+                info: "💡 أعضاء فريقك هيوصلهم إيميل دعوة ويقدروا يبدأوا شغل بمجرد القبول",
+                labelEmail: "إيميل عضو الفريق *",
+                placeholderEmail: "teammate@company.com",
+                btnAdd: "+ إضافة عضو",
+                labelWelcome: "ابعت إيميل ترحيب فيه نصايف وأفضل الممارسات",
+                btnBack: "رجوع",
+                btnContinue: "كمل للخطوة اللي بعدها",
+                skipLink: "تخطى دلوقتي، هضيفهم بعدين",
+                alertEmail: "من فضلك دخل الإيميل",
+                alertValid: "من فضلك دخل إيميل صحيح",
+                alertExists: "الإيميل ده متضاف قبل كده",
+                alertEmpty: "من فضلك ضيف عضو واحد على الأقل أو تخطى الخطوة دي",
+                alertSent: "تم إرسال الدعوات! فريقك هيوصلهم إيميلات قريب. جاري الانتقال لإضافة المهام...",
+                alertSkip: "تقدر تضيف أعضاء الفريق بعدين من إعدادات الفريق!",
+                membersAdded: "أعضاء مضافين",
+                greeting: "أهلاً، "
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            loadUserData(); // Refresh greeting
+            renderTeamMembers(); // Refresh list headers
+        }
     </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help & Support - TaskFlow</title>
+    <title>Help & Support - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,20 +11,44 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #38bdf8;
+            --primary-hover: #0ea5e9;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: white;
-            border-bottom: 1px solid #eee;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -39,7 +63,7 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: #0ea5e9;
+            color: var(--primary-color);
             cursor: pointer;
         }
 
@@ -50,14 +74,14 @@
 
         nav a {
             text-decoration: none;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #0ea5e9;
+            color: var(--primary-color);
         }
 
         .user-profile {
@@ -69,7 +93,7 @@
         .avatar {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -93,13 +117,13 @@
 
         .page-header h1 {
             font-size: 42px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 15px;
         }
 
         .page-header p {
             font-size: 16px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .search-container {
@@ -114,7 +138,9 @@
         .search-box input {
             flex: 1;
             padding: 12px 20px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
             transition: border-color 0.3s;
@@ -122,12 +148,12 @@
 
         .search-box input:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary-color);
         }
 
         .search-box button {
             padding: 12px 24px;
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            background-color: var(--primary-color);
             color: white;
             border: none;
             border-radius: 8px;
@@ -205,7 +231,7 @@
         }
 
         .support-section {
-            background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+            background: var(--primary-color);
             color: white;
             padding: 40px;
             border-radius: 12px;
@@ -242,8 +268,8 @@
         }
 
         .btn-light {
-            background-color: white;
-            color: #0ea5e9;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .btn-light:hover {
@@ -269,7 +295,7 @@
         }
 
         .quick-link {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: 8px;
             text-align: center;
@@ -290,7 +316,7 @@
 
         .quick-link-title {
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 15px;
         }
 
@@ -479,18 +505,50 @@
         .btn:hover:before {
             left: 100%;
         }
+
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        [dir="rtl"] {
+            text-align: right;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo" onclick="navigateTo('dashboard.html')">TaskFlow</div>
+            <div class="logo" onclick="navigateTo('dashboard.html')" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+            <div class="controls">
+                <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+            </div>
             <nav>
-                <a href="add-project.html">Projects</a>
-                <a href="dashboard.html#teamMembersList">Team</a>
-                <a href="account.html">Settings</a>
-                <a href="help.html">Help</a>
+                <a href="add-project.html" data-i18n="navProjects">Projects</a>
+                <a href="dashboard.html#teamMembersList" data-i18n="navTeam">Team</a>
+                <a href="account.html" data-i18n="navSettings">Settings</a>
+                <a href="help.html" data-i18n="navHelp">Help</a>
             </nav>
             <div class="user-profile" onclick="navigateTo('account.html')" style="cursor: pointer;">
                 <span id="userNameDisplay">User</span>
@@ -503,15 +561,15 @@
     <div class="container">
         <!-- Page Header -->
         <div class="page-header">
-            <h1>Help & Support</h1>
-            <p>Find answers to your questions and learn how to use TaskFlow</p>
+            <h1 data-i18n="helpTitle">Help & Support</h1>
+            <p data-i18n="helpSubtitle">Find answers to your questions and learn how to use the platform</p>
         </div>
 
         <!-- Search -->
         <div class="search-container">
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search for help..." onkeyup="filterFAQ()">
-                <button onclick="filterFAQ()">Search</button>
+                <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder" placeholder="Search for help..." onkeyup="filterFAQ()">
+                <button onclick="filterFAQ()" data-i18n="btnSearch">Search</button>
             </div>
         </div>
 
@@ -519,110 +577,110 @@
         <div class="quick-links">
             <div class="quick-link">
                 <div class="quick-link-icon">📚</div>
-                <div class="quick-link-title">Documentation</div>
+                <div class="quick-link-title" data-i18n="linkDocs">Documentation</div>
             </div>
             <div class="quick-link">
                 <div class="quick-link-icon">🎓</div>
-                <div class="quick-link-title">Tutorials</div>
+                <div class="quick-link-title" data-i18n="linkTutorials">Tutorials</div>
             </div>
             <div class="quick-link">
                 <div class="quick-link-icon">🐛</div>
-                <div class="quick-link-title">Report Bug</div>
+                <div class="quick-link-title" data-i18n="linkBug">Report Bug</div>
             </div>
             <div class="quick-link">
                 <div class="quick-link-icon">💡</div>
-                <div class="quick-link-title">Feature Request</div>
+                <div class="quick-link-title" data-i18n="linkFeature">Feature Request</div>
             </div>
         </div>
 
         <!-- FAQ Section -->
         <div class="faq-section">
-            <h2 class="faq-category-title">Getting Started</h2>
+            <h2 class="faq-category-title" data-i18n="catGettingStarted">Getting Started</h2>
             
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">How do I create a new project?</span>
+                    <span class="faq-question-text" data-i18n="faq1q">How do I create a new project?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq1a">
                     To create a new project, click on the "Projects" link in the navigation menu or use the "Create New Project" button on the dashboard. Fill in the project details like name, category, and template, then click "Create Project".
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">How do I invite team members?</span>
+                    <span class="faq-question-text" data-i18n="faq2q">How do I invite team members?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq2a">
                     You can invite team members by navigating to the Team section or clicking "Manage Team" on the dashboard. Enter the email addresses of the people you want to invite and assign them roles (Team Lead, Member, or Viewer). They will receive an invitation email.
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">What are the different project templates?</span>
+                    <span class="faq-question-text" data-i18n="faq3q">What are the different project templates?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq3a">
                     TaskFlow offers three project templates: Kanban Board (for workflow management), Timeline/Gantt (for project scheduling), and Checklist (for simple task tracking). Choose the one that best fits your project needs.
                 </div>
             </div>
         </div>
 
         <div class="faq-section">
-            <h2 class="faq-category-title">Managing Projects</h2>
+            <h2 class="faq-category-title" data-i18n="catManaging">Managing Projects</h2>
             
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">How do I add tasks to my project?</span>
+                    <span class="faq-question-text" data-i18n="faq4q">How do I add tasks to my project?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq4a">
                     Click on "Add Tasks" in the Quick Actions section of the dashboard. Enter the task title, description, assign it to a team member, set a due date, and specify the priority level. Click "Add Task" to save it to your project.
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">Can I change project privacy settings?</span>
+                    <span class="faq-question-text" data-i18n="faq5q">Can I change project privacy settings?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq5a">
                     Yes, you can set your project as either Private (only invited members can view) or Public (anyone can view but only members can edit). You can change this setting anytime by editing your project details.
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">How do I edit or delete a project?</span>
+                    <span class="faq-question-text" data-i18n="faq6q">How do I edit or delete a project?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq6a">
                     Go to your project and click "Edit Project" to modify its details. To delete a project, open the project details modal and click the delete option. This action cannot be undone, so please be careful.
                 </div>
             </div>
         </div>
 
         <div class="faq-section">
-            <h2 class="faq-category-title">Team Collaboration</h2>
+            <h2 class="faq-category-title" data-i18n="catTeam">Team Collaboration</h2>
             
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">What are the different team member roles?</span>
+                    <span class="faq-question-text" data-i18n="faq7q">What are the different team member roles?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq7a">
                     TaskFlow has three roles: Team Lead (full access and can manage team), Member (can create and edit tasks), and Viewer (can only view tasks). Assign roles based on your team's needs.
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span class="faq-question-text">How do I remove a team member?</span>
+                    <span class="faq-question-text" data-i18n="faq8q">How do I remove a team member?</span>
                     <span class="faq-toggle">▼</span>
                 </div>
-                <div class="faq-answer">
+                <div class="faq-answer" data-i18n="faq8a">
                     Go to the Team Members section on the dashboard and click on the member you want to remove. Click the "Remove Member" button to revoke their access to the project.
                 </div>
             </div>
@@ -630,16 +688,19 @@
 
         <!-- Support Section -->
         <div class="support-section">
-            <h2>Still Need Help?</h2>
-            <p>Can't find what you're looking for? Our support team is here to help!</p>
+            <h2 data-i18n="supportTitle">Still Need Help?</h2>
+            <p data-i18n="supportText">Can't find what you're looking for? Our support team is here to help!</p>
             <div class="support-buttons">
-                <button class="btn btn-light" onclick="alert('Email support coming soon: support@taskflow.com')">Contact Support</button>
-                <button class="btn btn-outline" onclick="navigateTo('dashboard.html')">Back to Dashboard</button>
+                <button class="btn btn-light" onclick="alert('Email support coming soon: support@taskflow.com')" data-i18n="btnContact">Contact Support</button>
+                <button class="btn btn-outline" onclick="navigateTo('dashboard.html')" data-i18n="btnBack">Back to Dashboard</button>
             </div>
         </div>
     </div>
 
     <script>
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
         function navigateTo(page) {
             window.location.href = page;
         }
@@ -675,8 +736,129 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             loadUserData();
         });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                navProjects: "Projects",
+                navTeam: "Team",
+                navSettings: "Settings",
+                navHelp: "Help",
+                helpTitle: "Help & Support",
+                helpSubtitle: "Find answers to your questions and learn how to use the platform",
+                searchPlaceholder: "Search for help...",
+                btnSearch: "Search",
+                linkDocs: "Documentation",
+                linkTutorials: "Tutorials",
+                linkBug: "Report Bug",
+                linkFeature: "Feature Request",
+                catGettingStarted: "Getting Started",
+                faq1q: "How do I create a new project?",
+                faq1a: "To create a new project, click on the 'Projects' link in the navigation menu or use the 'Create New Project' button on the dashboard.",
+                faq2q: "How do I invite team members?",
+                faq2a: "You can invite team members by navigating to the Team section or clicking 'Manage Team' on the dashboard.",
+                faq3q: "What are the different project templates?",
+                faq3a: "We offer three project templates: Kanban Board, Timeline/Gantt, and Checklist.",
+                catManaging: "Managing Projects",
+                faq4q: "How do I add tasks to my project?",
+                faq4a: "Click on 'Add Tasks' in the Quick Actions section of the dashboard.",
+                faq5q: "Can I change project privacy settings?",
+                faq5a: "Yes, you can set your project as either Private or Public.",
+                faq6q: "How do I edit or delete a project?",
+                faq6a: "Go to your project and click 'Edit Project' to modify its details.",
+                catTeam: "Team Collaboration",
+                faq7q: "What are the different team member roles?",
+                faq7a: "Roles include Team Lead, Member, and Viewer.",
+                faq8q: "How do I remove a team member?",
+                faq8a: "Go to the Team Members section and click 'Remove Member'.",
+                supportTitle: "Still Need Help?",
+                supportText: "Can't find what you're looking for? Our support team is here to help!",
+                btnContact: "Contact Support",
+                btnBack: "Back to Dashboard"
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                navProjects: "المشاريع",
+                navTeam: "الفريق",
+                navSettings: "الإعدادات",
+                navHelp: "مساعدة",
+                helpTitle: "المساعدة والدعم",
+                helpSubtitle: "لاقي إجابات لأسئلتك واتعلم إزاي تستخدم المنصة",
+                searchPlaceholder: "ابحث عن مساعدة...",
+                btnSearch: "بحث",
+                linkDocs: "التوثيق",
+                linkTutorials: "شروحات",
+                linkBug: "بلغ عن مشكلة",
+                linkFeature: "اطلب ميزة",
+                catGettingStarted: "البداية",
+                faq1q: "إزاي أعمل مشروع جديد؟",
+                faq1a: "عشان تعمل مشروع جديد، دوس على 'المشاريع' في القائمة أو استخدم زرار 'إنشاء مشروع جديد' في لوحة التحكم.",
+                faq2q: "إزاي أدعي أعضاء الفريق؟",
+                faq2a: "تقدر تدعي أعضاء الفريق من قسم الفريق أو بالضغط على 'إدارة الفريق' في لوحة التحكم.",
+                faq3q: "إيه هي قوالب المشاريع المختلفة؟",
+                faq3a: "بنقدم 3 قوالب: لوحة كانبان، الجدول الزمني، وقائمة المهام.",
+                catManaging: "إدارة المشاريع",
+                faq4q: "إزاي أضيف مهام للمشروع؟",
+                faq4a: "دوس على 'إضافة مهام' في قسم الإجراءات السريعة.",
+                faq5q: "أقدر أغير خصوصية المشروع؟",
+                faq5a: "أيوه، تقدر تخلي المشروع خاص أو عام.",
+                faq6q: "إزاي أعدل أو أمسح مشروع؟",
+                faq6a: "روح للمشروع ودوس 'تعديل المشروع' عشان تغير تفاصيله.",
+                catTeam: "تعاون الفريق",
+                faq7q: "إيه هي أدوار أعضاء الفريق؟",
+                faq7a: "الأدوار هي: قائد فريق، عضو، ومشاهد.",
+                faq8q: "إزاي أشيل عضو من الفريق؟",
+                faq8a: "روح لقسم أعضاء الفريق ودوس 'إزالة عضو'.",
+                supportTitle: "لسه محتاج مساعدة؟",
+                supportText: "مش لاقي اللي بتدور عليه؟ فريق الدعم بتاعنا موجود عشان يساعدك!",
+                btnContact: "تواصل مع الدعم",
+                btnBack: "رجوع للوحة التحكم"
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            loadUserData();
+        }
     </script>
 </body>
 </html>

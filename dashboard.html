@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - TaskFlow</title>
+    <title>Dashboard - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,20 +11,46 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+            --sidebar-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --sidebar-bg: #1f2937;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: white;
-            border-bottom: 1px solid #eee;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -40,7 +66,7 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: #0ea5e9;
+            color: var(--primary-color);
             z-index: 101;
         }
 
@@ -51,14 +77,14 @@
 
         nav a {
             text-decoration: none;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         nav a:hover {
-            color: #0ea5e9;
+            color: var(--primary-color);
         }
 
         .mobile-menu-btn {
@@ -74,7 +100,7 @@
             display: block;
             width: 25px;
             height: 3px;
-            background-color: #333;
+            background-color: var(--text-main);
             margin: 5px 0;
             transition: all 0.3s;
         }
@@ -120,7 +146,7 @@
 
         .welcome-section p {
             font-size: 16px;
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
         .dashboard-grid {
@@ -131,7 +157,7 @@
         }
 
         .card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -145,7 +171,7 @@
 
         .card h3 {
             font-size: 14px;
-            color: #999;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 12px;
@@ -155,13 +181,13 @@
         .card-value {
             font-size: 28px;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 15px;
         }
 
         .card-detail {
             font-size: 13px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .card-icon {
@@ -184,7 +210,7 @@
         .section-title {
             font-size: 22px;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 25px;
             display: flex;
             align-items: center;
@@ -203,7 +229,7 @@
         }
 
         .project-info {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -213,7 +239,7 @@
             display: flex;
             justify-content: space-between;
             padding: 15px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .info-row:last-child {
@@ -221,17 +247,17 @@
         }
 
         .info-label {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
         .info-value {
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
         }
 
         .team-section {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -241,7 +267,7 @@
             display: flex;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .team-member:last-child {
@@ -251,14 +277,14 @@
         .team-avatar {
             width: 36px;
             height: 36px;
-            background: #f3f4f6;
+            background: var(--bg-body);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 12px;
             font-weight: 600;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 13px;
         }
 
@@ -268,19 +294,19 @@
 
         .team-name {
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
         .team-role {
             font-size: 12px;
-            color: #999;
+            color: var(--text-secondary);
         }
 
         .empty-state {
             text-align: center;
             padding: 40px;
-            color: #999;
+            color: var(--text-secondary);
         }
 
         .empty-state-icon {
@@ -319,12 +345,12 @@
         }
 
         .btn-secondary {
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--bg-body);
+            color: var(--text-main);
         }
 
         .btn-secondary:hover {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .completion-badge {
@@ -339,7 +365,7 @@
         }
 
         .tasks-section {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -349,7 +375,7 @@
             display: flex;
             align-items: center;
             padding: 15px;
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
             border-radius: 8px;
             margin-bottom: 10px;
         }
@@ -367,17 +393,17 @@
 
         .task-title {
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 5px;
         }
 
         .task-meta {
             font-size: 12px;
-            color: #999;
+            color: var(--text-secondary);
         }
 
         .quick-actions {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -391,17 +417,17 @@
 
         .action-btn {
             padding: 15px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--border-color);
             border-radius: 8px;
-            background-color: white;
+            background-color: var(--bg-card);
             cursor: pointer;
             transition: all 0.3s;
             text-align: center;
         }
 
         .action-btn:hover {
-            border-color: #6366f1;
-            background-color: #f9fafb;
+            border-color: var(--primary-color);
+            background-color: var(--bg-body);
         }
 
         .action-btn-icon {
@@ -411,7 +437,7 @@
 
         .action-btn-text {
             font-weight: 600;
-            color: #333;
+            color: var(--text-main);
             font-size: 14px;
         }
 
@@ -443,7 +469,7 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: 12px;
             max-width: 700px;
@@ -471,12 +497,12 @@
             align-items: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #f3f4f6;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .modal-header h2 {
             font-size: 28px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin: 0;
         }
 
@@ -485,7 +511,7 @@
             border: none;
             font-size: 28px;
             cursor: pointer;
-            color: #999;
+            color: var(--text-secondary);
             transition: color 0.3s;
             padding: 0;
             width: 32px;
@@ -496,7 +522,7 @@
         }
 
         .close-btn:hover {
-            color: #333;
+            color: var(--text-main);
         }
 
         .detail-row {
@@ -505,7 +531,7 @@
             gap: 20px;
             margin-bottom: 25px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #f3f4f6;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .detail-row:last-child {
@@ -514,20 +540,20 @@
 
         .detail-label {
             font-weight: 600;
-            color: #6366f1;
+            color: var(--primary-color);
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .detail-value {
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 15px;
             line-height: 1.6;
         }
 
         .detail-value.empty {
-            color: #999;
+            color: var(--text-secondary);
             font-style: italic;
         }
 
@@ -552,11 +578,51 @@
             gap: 12px;
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 2px solid #f3f4f6;
+            border-top: 2px solid var(--border-color);
         }
 
         .modal-actions .btn {
             flex: 1;
+        }
+
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .card.success, [dir="rtl"] .card.primary, [dir="rtl"] .card.warning {
+            border-left: none;
+            border-right: 4px solid;
+        }
+        [dir="rtl"] .team-avatar {
+            margin-right: 0;
+            margin-left: 12px;
+        }
+        [dir="rtl"] .detail-row {
+            grid-template-columns: 1fr 150px;
         }
 
         @media (max-width: 1024px) {
@@ -580,7 +646,7 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: white;
+                background-color: var(--bg-card);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -837,17 +903,21 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo">TaskFlow</div>
+            <div class="logo" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+            <div class="controls">
+                <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+            </div>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <nav>
-                <a href="add-project.html">Projects</a>
-                <a href="#teamMembersList">Team</a>
-                <a href="account.html">Settings</a>
-                <a href="help.html">Help</a>
+                <a href="add-project.html" data-i18n="navProjects">Projects</a>
+                <a href="#teamMembersList" data-i18n="navTeam">Team</a>
+                <a href="account.html" data-i18n="navSettings">Settings</a>
+                <a href="help.html" data-i18n="navHelp">Help</a>
             </nav>
             <div class="user-profile" onclick="navigateTo('account.html')" style="cursor: pointer;">
                 <span id="userNameDisplay">User</span>
@@ -860,30 +930,30 @@
     <div class="container">
         <!-- Welcome Section -->
         <div class="welcome-section">
-            <h1>Welcome to TaskFlow! 🎉</h1>
-            <p>Your workspace is all set up and ready to go. Start managing your projects with ease.</p>
+            <h1 data-i18n="welcomeTitle">Welcome to Mo_nassar! 🎉</h1>
+            <p data-i18n="welcomeText">Your workspace is all set up and ready to go. Start managing your projects with ease.</p>
         </div>
 
-        <div class="completion-badge">✓ Setup Complete - All 4 Steps Finished</div>
+        <div class="completion-badge" data-i18n="setupComplete">✓ Setup Complete - All 4 Steps Finished</div>
 
         <!-- Stats Cards -->
         <div class="dashboard-grid">
             <div class="card success">
-                <h3>Account Status</h3>
-                <div class="card-value">Active</div>
-                <div class="card-detail">Ready to collaborate</div>
+                <h3 data-i18n="cardStatus">Account Status</h3>
+                <div class="card-value" data-i18n="statusActive">Active</div>
+                <div class="card-detail" data-i18n="statusDetail">Ready to collaborate</div>
                 <div class="card-icon">✓</div>
             </div>
             <div class="card primary">
-                <h3>Project</h3>
+                <h3 data-i18n="cardProject">Project</h3>
                 <div class="card-value" id="projectCount">1</div>
-                <div class="card-detail" id="projectName">Created successfully</div>
+                <div class="card-detail" id="projectName" data-i18n="projectDetail">Created successfully</div>
                 <div class="card-icon">📊</div>
             </div>
             <div class="card warning">
-                <h3>Team Members</h3>
+                <h3 data-i18n="cardTeam">Team Members</h3>
                 <div class="card-value" id="teamCount">0</div>
-                <div class="card-detail">Ready to invite more</div>
+                <div class="card-detail" data-i18n="teamDetail">Ready to invite more</div>
                 <div class="card-icon">👥</div>
             </div>
         </div>
@@ -893,44 +963,44 @@
             <!-- Project Info -->
             <div class="project-info">
                 <h3 class="section-title">
-                    <span>📋</span> Project Information
+                    <span>📋</span> <span data-i18n="projectInfoTitle">Project Information</span>
                 </h3>
                 <div class="info-row">
-                    <span class="info-label">Project Name</span>
+                    <span class="info-label" data-i18n="labelProjectName">Project Name</span>
                     <span class="info-value" id="displayProjectName">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Category</span>
+                    <span class="info-label" data-i18n="labelCategory">Category</span>
                     <span class="info-value" id="displayCategory">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Template</span>
+                    <span class="info-label" data-i18n="labelTemplate">Template</span>
                     <span class="info-value" id="displayTemplate">-</span>
                 </div>
                 <div class="info-row">
-                    <span class="info-label">Privacy Level</span>
+                    <span class="info-label" data-i18n="labelPrivacy">Privacy Level</span>
                     <span class="info-value" id="displayPrivacy">-</span>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="editProject()">Edit Project</button>
-                    <button class="btn btn-secondary" onclick="viewProjectDetails()">View Details</button>
+                    <button class="btn btn-primary" onclick="editProject()" data-i18n="btnEditProject">Edit Project</button>
+                    <button class="btn btn-secondary" onclick="viewProjectDetails()" data-i18n="btnViewDetails">View Details</button>
                 </div>
             </div>
 
             <!-- Team Section -->
             <div class="team-section">
                 <h3 class="section-title">
-                    <span>👥</span> Team Members
+                    <span>👥</span> <span data-i18n="teamMembersTitle">Team Members</span>
                 </h3>
                 <div id="teamMembersList">
                     <div class="empty-state">
                         <div class="empty-state-icon">😊</div>
-                        <div class="empty-state-text">No team members invited yet</div>
+                        <div class="empty-state-text" data-i18n="noTeamMembers">No team members invited yet</div>
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn btn-primary" onclick="navigateTo('invite-team.html')">Manage Team</button>
-                    <button class="btn btn-secondary" onclick="navigateTo('invite-team.html')">Invite Members</button>
+                    <button class="btn btn-primary" onclick="navigateTo('invite-team.html')" data-i18n="btnManageTeam">Manage Team</button>
+                    <button class="btn btn-secondary" onclick="navigateTo('invite-team.html')" data-i18n="btnInviteMembers">Invite Members</button>
                 </div>
             </div>
         </div>
@@ -938,24 +1008,24 @@
         <!-- Quick Actions -->
         <div class="quick-actions">
             <h3 class="section-title">
-                <span>⚡</span> Quick Actions
+                <span>⚡</span> <span data-i18n="quickActionsTitle">Quick Actions</span>
             </h3>
             <div class="action-grid">
                 <div class="action-btn" onclick="navigateTo('add-project.html')">
                     <div class="action-btn-icon">➕</div>
-                    <div class="action-btn-text">Create New Project</div>
+                    <div class="action-btn-text" data-i18n="actionCreateProject">Create New Project</div>
                 </div>
                 <div class="action-btn" onclick="navigateTo('add-tasks.html')">
                     <div class="action-btn-icon">📝</div>
-                    <div class="action-btn-text">Add Tasks</div>
+                    <div class="action-btn-text" data-i18n="actionAddTasks">Add Tasks</div>
                 </div>
                 <div class="action-btn" onclick="navigateTo('invite-team.html')">
                     <div class="action-btn-icon">👤</div>
-                    <div class="action-btn-text">Manage Team</div>
+                    <div class="action-btn-text" data-i18n="actionManageTeam">Manage Team</div>
                 </div>
                 <div class="action-btn" onclick="navigateTo('account.html')">
                     <div class="action-btn-icon">⚙️</div>
-                    <div class="action-btn-text">Account Settings</div>
+                    <div class="action-btn-text" data-i18n="actionAccountSettings">Account Settings</div>
                 </div>
             </div>
         </div>
@@ -965,65 +1035,68 @@
     <div id="projectDetailsModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Project Details</h2>
+                <h2 data-i18n="modalTitle">Project Details</h2>
                 <button class="close-btn" onclick="closeProjectModal()">&times;</button>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Project Name</div>
+                <div class="detail-label" data-i18n="labelProjectName">Project Name</div>
                 <div class="detail-value" id="modalProjectName">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Description</div>
+                <div class="detail-label" data-i18n="labelDescription">Description</div>
                 <div class="detail-value" id="modalDescription">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Category</div>
+                <div class="detail-label" data-i18n="labelCategory">Category</div>
                 <div class="detail-value" id="modalCategory">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Template</div>
+                <div class="detail-label" data-i18n="labelTemplate">Template</div>
                 <div class="detail-value" id="modalTemplate">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Privacy Level</div>
+                <div class="detail-label" data-i18n="labelPrivacy">Privacy Level</div>
                 <div class="detail-value" id="modalPrivacy">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Start Date</div>
+                <div class="detail-label" data-i18n="labelStartDate">Start Date</div>
                 <div class="detail-value" id="modalStartDate">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">End Date</div>
+                <div class="detail-label" data-i18n="labelEndDate">End Date</div>
                 <div class="detail-value" id="modalEndDate">-</div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Status</div>
+                <div class="detail-label" data-i18n="labelStatus">Status</div>
                 <div class="detail-value">
-                    <span class="badge">Active</span>
+                    <span class="badge" data-i18n="statusActive">Active</span>
                 </div>
             </div>
 
             <div class="detail-row">
-                <div class="detail-label">Created</div>
+                <div class="detail-label" data-i18n="labelCreated">Created</div>
                 <div class="detail-value" id="modalCreatedDate">-</div>
             </div>
 
             <div class="modal-actions">
-                <button class="btn btn-primary" onclick="editProjectFromModal()">Edit Project</button>
-                <button class="btn btn-secondary" onclick="closeProjectModal()">Close</button>
+                <button class="btn btn-primary" onclick="editProjectFromModal()" data-i18n="btnEditProject">Edit Project</button>
+                <button class="btn btn-secondary" onclick="closeProjectModal()" data-i18n="btnClose">Close</button>
             </div>
         </div>
     </div>
 
     <script>
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
         function navigateTo(page) {
             window.location.href = page;
         }
@@ -1069,7 +1142,7 @@
                 container.innerHTML = `
                     <div class="empty-state">
                         <div class="empty-state-icon">😊</div>
-                        <div class="empty-state-text">No team members invited yet</div>
+                        <div class="empty-state-text">${translations[currentLang].noTeamMembers}</div>
                     </div>
                 `;
                 return;
@@ -1153,6 +1226,8 @@
 
         // Load data on page load
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             loadDashboardData();
         });
 
@@ -1175,6 +1250,122 @@
                 document.body.style.overflow = '';
             });
         });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                navProjects: "Projects",
+                navTeam: "Team",
+                navSettings: "Settings",
+                navHelp: "Help",
+                welcomeTitle: "Welcome to Mo_nassar! 🎉",
+                welcomeText: "Your workspace is all set up and ready to go. Start managing your projects with ease.",
+                setupComplete: "✓ Setup Complete - All 4 Steps Finished",
+                cardStatus: "Account Status",
+                statusActive: "Active",
+                statusDetail: "Ready to collaborate",
+                cardProject: "Project",
+                projectDetail: "Created successfully",
+                cardTeam: "Team Members",
+                teamDetail: "Ready to invite more",
+                projectInfoTitle: "Project Information",
+                labelProjectName: "Project Name",
+                labelCategory: "Category",
+                labelTemplate: "Template",
+                labelPrivacy: "Privacy Level",
+                btnEditProject: "Edit Project",
+                btnViewDetails: "View Details",
+                teamMembersTitle: "Team Members",
+                noTeamMembers: "No team members invited yet",
+                btnManageTeam: "Manage Team",
+                btnInviteMembers: "Invite Members",
+                quickActionsTitle: "Quick Actions",
+                actionCreateProject: "Create New Project",
+                actionAddTasks: "Add Tasks",
+                actionManageTeam: "Manage Team",
+                actionAccountSettings: "Account Settings",
+                modalTitle: "Project Details",
+                labelDescription: "Description",
+                labelStartDate: "Start Date",
+                labelEndDate: "End Date",
+                labelStatus: "Status",
+                labelCreated: "Created",
+                btnClose: "Close"
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                navProjects: "المشاريع",
+                navTeam: "الفريق",
+                navSettings: "الإعدادات",
+                navHelp: "مساعدة",
+                welcomeTitle: "أهلاً بيك في Mo_nassar! 🎉",
+                welcomeText: "مساحة العمل جاهزة. ابدأ إدارة مشاريعك بسهولة.",
+                setupComplete: "✓ تم الإعداد - كل الخطوات خلصت",
+                cardStatus: "حالة الحساب",
+                statusActive: "نشط",
+                statusDetail: "جاهز للتعاون",
+                cardProject: "المشروع",
+                projectDetail: "تم الإنشاء بنجاح",
+                cardTeam: "أعضاء الفريق",
+                teamDetail: "جاهز لدعوة المزيد",
+                projectInfoTitle: "معلومات المشروع",
+                labelProjectName: "اسم المشروع",
+                labelCategory: "التصنيف",
+                labelTemplate: "القالب",
+                labelPrivacy: "الخصوصية",
+                btnEditProject: "تعديل المشروع",
+                btnViewDetails: "عرض التفاصيل",
+                teamMembersTitle: "أعضاء الفريق",
+                noTeamMembers: "مفيش أعضاء لسه",
+                btnManageTeam: "إدارة الفريق",
+                btnInviteMembers: "دعوة أعضاء",
+                quickActionsTitle: "إجراءات سريعة",
+                actionCreateProject: "إنشاء مشروع جديد",
+                actionAddTasks: "إضافة مهام",
+                actionManageTeam: "إدارة الفريق",
+                actionAccountSettings: "إعدادات الحساب",
+                modalTitle: "تفاصيل المشروع",
+                labelDescription: "الوصف",
+                labelStartDate: "تاريخ البداية",
+                labelEndDate: "تاريخ النهاية",
+                labelStatus: "الحالة",
+                labelCreated: "تاريخ الإنشاء",
+                btnClose: "إغلاق"
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            loadDashboardData();
+        }
     </script>
 </body>
 </html>

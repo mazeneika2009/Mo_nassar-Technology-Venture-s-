@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Tasks - TaskFlow</title>
+    <title>Add Tasks - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,12 +11,43 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --sidebar-bg: #ffffff;
+            --step-bg: #f3f4f6;
+            --step-text: #333;
+            --input-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #818cf8;
+            --primary-hover: #6366f1;
+            --sidebar-bg: #1f2937;
+            --step-bg: #374151;
+            --step-text: #e5e7eb;
+            --input-bg: #374151;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -25,10 +56,11 @@
         }
 
         header {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
             margin-bottom: 40px;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -52,7 +84,7 @@
         .avatar {
             width: 40px;
             height: 40px;
-            background: #6366f1;
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -69,16 +101,17 @@
         }
 
         .sidebar {
-            background-color: white;
+            background-color: var(--sidebar-bg);
             padding: 30px;
             border-radius: 12px;
             height: fit-content;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .sidebar h2 {
             font-size: 16px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
         }
 
@@ -94,17 +127,18 @@
             gap: 12px;
             padding: 15px;
             border-radius: 8px;
-            background-color: #f3f4f6;
+            background-color: var(--step-bg);
+            color: var(--step-text);
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .progress-step:hover:not(.active):not(.completed) {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .progress-step.active {
-            background-color: #6366f1;
+            background-color: var(--primary-color);
             color: white;
         }
 
@@ -121,13 +155,13 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            background-color: white;
-            color: #6366f1;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .progress-step.active .step-number {
-            background-color: white;
-            color: #6366f1;
+            background-color: var(--bg-card);
+            color: var(--primary-color);
         }
 
         .progress-step.completed .step-number {
@@ -136,20 +170,21 @@
         }
 
         .form-card {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: background-color 0.3s;
         }
 
         .form-card h1 {
             font-size: 32px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 10px;
         }
 
         .form-card .subtitle {
-            color: #666;
+            color: var(--text-secondary);
             margin-bottom: 30px;
             font-size: 15px;
         }
@@ -162,23 +197,25 @@
             display: block;
             margin-bottom: 10px;
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
         input, textarea, select {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
+            background-color: var(--input-bg);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
             font-family: inherit;
         }
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
@@ -199,7 +236,7 @@
 
         .btn-add-task {
             padding: 12px 25px;
-            background-color: #6366f1;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             border-radius: 8px;
@@ -210,7 +247,7 @@
         }
 
         .btn-add-task:hover {
-            background-color: #4f46e5;
+            background-color: var(--primary-hover);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
         }
@@ -218,12 +255,12 @@
         .tasks-list {
             margin-top: 30px;
             padding-top: 30px;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--border-color);
         }
 
         .tasks-list h3 {
             font-size: 18px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
         }
 
@@ -232,7 +269,7 @@
             grid-template-columns: auto 1fr auto;
             gap: 15px;
             padding: 15px;
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
             border-radius: 8px;
             margin-bottom: 12px;
             align-items: center;
@@ -252,12 +289,12 @@
 
         .task-title {
             font-weight: 500;
-            color: #1f2937;
+            color: var(--text-heading);
         }
 
         .task-assignee {
             font-size: 12px;
-            color: #999;
+            color: var(--text-secondary);
         }
 
         .task-remove {
@@ -328,12 +365,12 @@
         }
 
         .btn-secondary {
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--step-bg);
+            color: var(--text-main);
         }
 
         .btn-secondary:hover {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .skip-link {
@@ -342,7 +379,7 @@
         }
 
         .skip-link a {
-            color: #6366f1;
+            color: var(--primary-color);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -353,7 +390,7 @@
         }
 
         .task-count {
-            background-color: #6366f1;
+            background-color: var(--primary-color);
             color: white;
             padding: 2px 8px;
             border-radius: 12px;
@@ -528,6 +565,46 @@
             transform: translateX(5px);
         }
 
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .task-remove {
+            transform: scaleX(-1);
+        }
+        [dir="rtl"] .info-box {
+            border-left: none;
+            border-right: 4px solid #3b82f6;
+        }
+        [dir="rtl"] .task-count {
+            margin-left: 0;
+            margin-right: 10px;
+        }
+
         @media (max-width: 768px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -569,7 +646,11 @@
         <!-- Header -->
         <header>
             <div class="header-content">
-                <div class="logo">TaskFlow</div>
+                <div class="logo" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+                <div class="controls">
+                    <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                    <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+                </div>
                 <div class="user-profile">
                     <span id="userGreeting">Welcome, User!</span>
                     <div class="avatar" id="userInitials">U</div>
@@ -581,56 +662,56 @@
         <div class="main-content">
             <!-- Sidebar Progress -->
             <div class="sidebar">
-                <h2>Setup Progress</h2>
+                <h2 data-i18n="setupProgress">Setup Progress</h2>
                 <div class="progress-steps">
                     <div class="progress-step completed">
                         <div class="step-number">✓</div>
-                        <span>Create Account</span>
+                        <span data-i18n="step1">Create Account</span>
                     </div>
                     <div class="progress-step completed">
                         <div class="step-number">✓</div>
-                        <span>Create Project</span>
+                        <span data-i18n="step2">Create Project</span>
                     </div>
                     <div class="progress-step completed">
                         <div class="step-number">✓</div>
-                        <span>Invite Team</span>
+                        <span data-i18n="step3">Invite Team</span>
                     </div>
                     <div class="progress-step active">
                         <div class="step-number">4</div>
-                        <span>Add Tasks</span>
+                        <span data-i18n="step4">Add Tasks</span>
                     </div>
                 </div>
             </div>
 
             <!-- Form Card -->
             <div class="form-card">
-                <h1>Add Your First Tasks</h1>
-                <p class="subtitle">Create tasks for your team to get them organized and ready to collaborate</p>
+                <h1 data-i18n="heading">Add Your First Tasks</h1>
+                <p class="subtitle" data-i18n="subtitle">Create tasks for your team to get them organized and ready to collaborate</p>
 
-                <div class="info-box">
+                <div class="info-box" data-i18n="info">
                     💡 Tasks are optional for now. You can always add, edit, or delete them later from your project dashboard
                 </div>
 
                 <form id="tasksForm">
                     <div class="form-group">
-                        <label for="taskTitle">Task Title *</label>
+                        <label for="taskTitle" data-i18n="labelTitle">Task Title *</label>
                         <div class="task-input-group">
-                            <input type="text" id="taskTitle" placeholder="e.g., Design Homepage, Write API Documentation" required>
-                            <button type="button" class="btn-add-task" onclick="addTask(event)">+ Add Task</button>
+                            <input type="text" id="taskTitle" data-i18n-placeholder="placeholderTitle" placeholder="e.g., Design Homepage, Write API Documentation" required>
+                            <button type="button" class="btn-add-task" onclick="addTask(event)" data-i18n="btnAdd">+ Add Task</button>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="taskAssignee">Assign To</label>
+                            <label for="taskAssignee" data-i18n="labelAssignee">Assign To</label>
                             <select id="taskAssignee" name="taskAssignee">
-                                <option value="">Unassigned</option>
-                                <option value="you">You</option>
-                                <option value="team">Team Member</option>
+                                <option value="" data-i18n="optUnassigned">Unassigned</option>
+                                <option value="you" data-i18n="optYou">You</option>
+                                <option value="team" data-i18n="optTeam">Team Member</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="taskDueDate">Due Date</label>
+                            <label for="taskDueDate" data-i18n="labelDate">Due Date</label>
                             <input type="date" id="taskDueDate" name="taskDueDate">
                         </div>
                     </div>
@@ -640,12 +721,12 @@
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn btn-secondary" onclick="navigateTo('invite-team.html')">Back</button>
-                        <button type="submit" class="btn btn-primary" onclick="handleTasksSubmit(event)">Complete Setup</button>
+                        <button type="button" class="btn btn-secondary" onclick="navigateTo('invite-team.html')" data-i18n="btnBack">Back</button>
+                        <button type="submit" class="btn btn-primary" onclick="handleTasksSubmit(event)" data-i18n="btnComplete">Complete Setup</button>
                     </div>
 
                     <div class="skip-link">
-                        <a href="#" onclick="skipTasks(event)">Skip and go to dashboard</a>
+                        <a href="#" onclick="skipTasks(event)" data-i18n="skipLink">Skip and go to dashboard</a>
                     </div>
                 </form>
             </div>
@@ -654,6 +735,8 @@
 
     <script>
         let tasks = [];
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
 
         function addTask(event) {
             event.preventDefault();
@@ -662,15 +745,15 @@
             const taskDueDate = document.getElementById('taskDueDate').value;
 
             if (!taskTitle) {
-                alert('Please enter a task title');
+                alert(translations[currentLang].alertTitle);
                 return;
             }
 
             const task = {
                 id: Date.now(),
                 title: taskTitle,
-                assignee: taskAssignee || 'Unassigned',
-                dueDate: taskDueDate || 'No due date',
+                assignee: taskAssignee || translations[currentLang].optUnassigned,
+                dueDate: taskDueDate || '',
                 completed: false
             };
 
@@ -706,7 +789,7 @@
 
             tasksList.style.display = 'block';
             
-            let html = '<h3>Tasks <span class="task-count">' + tasks.length + '</span></h3>';
+            let html = '<h3>' + translations[currentLang].tasksTitle + ' <span class="task-count">' + tasks.length + '</span></h3>';
             
             tasks.forEach(task => {
                 const isCompleted = task.completed ? 'checked' : '';
@@ -734,13 +817,12 @@
         function handleTasksSubmit(event) {
             event.preventDefault();
             
-            let message = 'Setup complete! ';
+            let message = translations[currentLang].alertSuccess;
             if (tasks.length > 0) {
-                message += 'You\'ve added ' + tasks.length + ' task' + (tasks.length !== 1 ? 's' : '') + '. ';
+                // message += 'You\'ve added ' + tasks.length + ' task' + (tasks.length !== 1 ? 's' : '') + '. ';
             } else {
-                message += 'No tasks added. ';
+                // message += 'No tasks added. ';
             }
-            message += 'Your workspace is ready to go! Redirecting to dashboard...';
             
             // Save tasks and project data
             localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -751,7 +833,7 @@
 
         function skipTasks(event) {
             event.preventDefault();
-            let message = 'No tasks added. Your workspace is ready to go! Redirecting to dashboard...';
+            let message = translations[currentLang].alertSkip;
             alert(message);
             navigateTo('dashboard.html');
         }
@@ -762,12 +844,14 @@
             const userLastName = localStorage.getItem('userLastName') || '';
             const userInitials = (userName.charAt(0) + userLastName.charAt(0)).toUpperCase();
             
-            document.getElementById('userGreeting').textContent = 'Welcome, ' + userName + '!';
+            document.getElementById('userGreeting').textContent = translations[currentLang].greeting + userName + '!';
             document.getElementById('userInitials').textContent = userInitials;
         }
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             loadUserData();
         });
 
@@ -781,6 +865,106 @@
         document.getElementById('tasksForm').addEventListener('submit', function(e) {
             e.preventDefault();
         });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                setupProgress: "Setup Progress",
+                step1: "Create Account",
+                step2: "Create Project",
+                step3: "Invite Team",
+                step4: "Add Tasks",
+                heading: "Add Your First Tasks",
+                subtitle: "Create tasks for your team to get them organized and ready to collaborate",
+                info: "💡 Tasks are optional for now. You can always add, edit, or delete them later from your project dashboard",
+                labelTitle: "Task Title *",
+                placeholderTitle: "e.g., Design Homepage, Write API Documentation",
+                btnAdd: "+ Add Task",
+                labelAssignee: "Assign To",
+                optUnassigned: "Unassigned",
+                optYou: "You",
+                optTeam: "Team Member",
+                labelDate: "Due Date",
+                btnBack: "Back",
+                btnComplete: "Complete Setup",
+                skipLink: "Skip and go to dashboard",
+                tasksTitle: "Tasks",
+                alertTitle: "Please enter a task title",
+                alertSuccess: "Setup complete! Your workspace is ready to go! Redirecting to dashboard...",
+                alertSkip: "No tasks added. Your workspace is ready to go! Redirecting to dashboard...",
+                greeting: "Welcome, "
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                setupProgress: "خطوات الإعداد",
+                step1: "إنشاء حساب",
+                step2: "إنشاء مشروع",
+                step3: "دعوة الفريق",
+                step4: "إضافة مهام",
+                heading: "ضيف أول مهام ليك",
+                subtitle: "أنشئ مهام لفريقك عشان تنظم الشغل ويبقوا جاهزين للتعاون",
+                info: "💡 المهام اختيارية دلوقتي. تقدر تضيف، تعدل، أو تمسحهم بعدين من لوحة التحكم",
+                labelTitle: "عنوان المهمة *",
+                placeholderTitle: "مثال: تصميم الصفحة الرئيسية، كتابة التوثيق البرمجي",
+                btnAdd: "+ إضافة مهمة",
+                labelAssignee: "تعيين لـ",
+                optUnassigned: "غير معين",
+                optYou: "أنت",
+                optTeam: "عضو فريق",
+                labelDate: "تاريخ الاستحقاق",
+                btnBack: "رجوع",
+                btnComplete: "إتمام الإعداد",
+                skipLink: "تخطى وروح للوحة التحكم",
+                tasksTitle: "المهام",
+                alertTitle: "من فضلك دخل عنوان المهمة",
+                alertSuccess: "تم الإعداد! مساحة العمل جاهزة. جاري التحويل للوحة التحكم...",
+                alertSkip: "مفيش مهام اتضافت. مساحة العمل جاهزة! جاري التحويل...",
+                greeting: "أهلاً، "
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            loadUserData(); // Refresh greeting
+            renderTasks(); // Refresh tasks list headers if any
+        }
     </script>
 </body>
 </html>

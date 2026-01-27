@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account - TaskFlow</title>
+    <title>My Account - Mo_nassar (Technology Venture’s)</title>
     <style>
         * {
             margin: 0;
@@ -11,20 +11,46 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-body: #f9fafb;
+            --bg-card: #ffffff;
+            --text-main: #333333;
+            --text-heading: #1f2937;
+            --text-secondary: #666666;
+            --border-color: #e5e7eb;
+            --primary-color: #0ea5e9;
+            --primary-hover: #0284c7;
+            --sidebar-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --text-main: #e5e7eb;
+            --text-heading: #f9fafb;
+            --text-secondary: #9ca3af;
+            --border-color: #374151;
+            --primary-color: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --sidebar-bg: #1f2937;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f9fafb;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: white;
-            border-bottom: 1px solid #eee;
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
             padding: 20px 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s;
         }
 
         .header-content {
@@ -39,7 +65,7 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: #0ea5e9;
+            color: var(--primary-color);
             cursor: pointer;
         }
 
@@ -50,7 +76,7 @@
 
         nav a {
             text-decoration: none;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
             transition: color 0.3s;
@@ -58,7 +84,7 @@
         }
 
         nav a:hover {
-            color: #0ea5e9;
+            color: var(--primary-color);
         }
 
         .user-profile {
@@ -118,7 +144,7 @@
 
         .account-header p {
             font-size: 16px;
-            opacity: 0.95;
+            opacity: 0.9;
         }
 
         .content-grid {
@@ -128,7 +154,7 @@
         }
 
         .sidebar {
-            background-color: white;
+            background-color: var(--sidebar-bg);
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -138,10 +164,10 @@
         .sidebar h3 {
             font-size: 16px;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #f3f4f6;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .sidebar-menu {
@@ -153,7 +179,7 @@
         .sidebar-item {
             padding: 12px 15px;
             border-radius: 8px;
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 500;
@@ -161,8 +187,8 @@
         }
 
         .sidebar-item:hover {
-            background-color: #f3f4f6;
-            color: #6366f1;
+            opacity: 0.8;
+            color: var(--primary-color);
         }
 
         .sidebar-item.active {
@@ -171,7 +197,7 @@
         }
 
         .main-content {
-            background-color: white;
+            background-color: var(--bg-card);
             padding: 35px;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -179,10 +205,10 @@
 
         .main-content h2 {
             font-size: 24px;
-            color: #1f2937;
+            color: var(--text-heading);
             margin-bottom: 30px;
             padding-bottom: 20px;
-            border-bottom: 2px solid #f3f4f6;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .form-group {
@@ -193,28 +219,30 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: #1f2937;
+            color: var(--text-heading);
             font-size: 14px;
         }
 
         input, textarea, select {
             width: 100%;
             padding: 12px 15px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
             font-family: inherit;
         }
 
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #6366f1;
+            border-color: var(--primary-color);
             box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
         }
 
         input[type="email"], input[type="text"] {
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
         }
 
         .form-row {
@@ -224,18 +252,18 @@
         }
 
         .info-box {
-            background-color: #f9fafb;
+            background-color: var(--bg-body);
             padding: 20px;
             border-radius: 8px;
             margin-bottom: 20px;
-            border-left: 4px solid #6366f1;
+            border-left: 4px solid var(--primary-color);
         }
 
         .info-row {
             display: flex;
             justify-content: space-between;
             padding: 12px 0;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .info-row:last-child {
@@ -244,11 +272,11 @@
 
         .info-label {
             font-weight: 600;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .info-value {
-            color: #1f2937;
+            color: var(--text-heading);
             font-weight: 500;
         }
 
@@ -257,7 +285,7 @@
             gap: 15px;
             margin-top: 35px;
             padding-top: 25px;
-            border-top: 2px solid #f3f4f6;
+            border-top: 2px solid var(--border-color);
         }
 
         .btn {
@@ -282,12 +310,12 @@
         }
 
         .btn-secondary {
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--bg-body);
+            color: var(--text-main);
         }
 
         .btn-secondary:hover {
-            background-color: #e5e7eb;
+            opacity: 0.8;
         }
 
         .btn-danger {
@@ -466,6 +494,39 @@
             transform: translateX(5px);
         }
 
+        /* Controls for Theme and Lang */
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-right: 20px;
+        }
+        [dir="rtl"] .controls {
+            margin-right: 0;
+            margin-left: 20px;
+        }
+        .btn-icon {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .btn-icon:hover {
+            background-color: var(--bg-body);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+        [dir="rtl"] .info-box {
+            border-left: none;
+            border-right: 4px solid var(--primary-color);
+        }
+
         @media (max-width: 768px) {
             .content-grid {
                 grid-template-columns: 1fr;
@@ -489,12 +550,16 @@
     <!-- Header -->
     <header>
         <div class="header-content">
-            <div class="logo" onclick="navigateTo('dashboard.html')">TaskFlow</div>
+            <div class="logo" onclick="navigateTo('dashboard.html')" data-i18n="brandName">Mo_nassar (Technology Venture’s)</div>
+            <div class="controls">
+                <button type="button" class="btn-icon" onclick="toggleTheme()" id="themeBtn">🌙</button>
+                <button type="button" class="btn-icon" onclick="toggleLanguage()" id="langBtn">عربي</button>
+            </div>
             <nav>
-                <a onclick="navigateTo('dashboard.html')">Dashboard</a>
-                <a onclick="navigateTo('dashboard.html')">Projects</a>
-                <a onclick="navigateTo('dashboard.html')">Team</a>
-                <a href="#">Help</a>
+                <a onclick="navigateTo('dashboard.html')" data-i18n="navDashboard">Dashboard</a>
+                <a onclick="navigateTo('dashboard.html')" data-i18n="navProjects">Projects</a>
+                <a onclick="navigateTo('dashboard.html')" data-i18n="navTeam">Team</a>
+                <a href="#" data-i18n="navHelp">Help</a>
             </nav>
             <div class="user-profile" onclick="navigateTo('account.html')">
                 <span id="userNameDisplay">User</span>
@@ -507,7 +572,7 @@
     <div class="container">
         <div class="account-header">
             <div class="account-header-avatar" id="accountAvatar">U</div>
-            <h1>My Account</h1>
+            <h1 data-i18n="myAccount">My Account</h1>
             <p id="accountEmail">user@example.com</p>
         </div>
 
@@ -515,13 +580,13 @@
         <div class="content-grid">
             <!-- Sidebar -->
             <div class="sidebar">
-                <h3>Account Settings</h3>
+                <h3 data-i18n="accountSettings">Account Settings</h3>
                 <div class="sidebar-menu">
-                    <div class="sidebar-item active" onclick="switchSection('profile')">👤 Profile Information</div>
-                    <div class="sidebar-item" onclick="switchSection('password')">🔐 Change Password</div>
-                    <div class="sidebar-item" onclick="switchSection('notifications')">🔔 Notifications</div>
-                    <div class="sidebar-item" onclick="switchSection('billing')">💳 Billing</div>
-                    <div class="sidebar-item" onclick="switchSection('security')">🛡️ Security</div>
+                    <div class="sidebar-item active" onclick="switchSection('profile')" data-i18n="menuProfile">👤 Profile Information</div>
+                    <div class="sidebar-item" onclick="switchSection('password')" data-i18n="menuPassword">🔐 Change Password</div>
+                    <div class="sidebar-item" onclick="switchSection('notifications')" data-i18n="menuNotifications">🔔 Notifications</div>
+                    <div class="sidebar-item" onclick="switchSection('billing')" data-i18n="menuBilling">💳 Billing</div>
+                    <div class="sidebar-item" onclick="switchSection('security')" data-i18n="menuSecurity">🛡️ Security</div>
                 </div>
             </div>
 
@@ -531,47 +596,47 @@
 
                 <!-- Profile Section -->
                 <div id="profile" class="section active">
-                    <h2>Profile Information</h2>
+                    <h2 data-i18n="profileTitle">Profile Information</h2>
                     
                     <div class="info-box">
                         <div class="info-row">
-                            <span class="info-label">Member Since</span>
+                            <span class="info-label" data-i18n="labelMemberSince">Member Since</span>
                             <span class="info-value" id="memberSince">January 2026</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Account Status</span>
-                            <span class="info-value">✓ Active</span>
+                            <span class="info-label" data-i18n="labelStatus">Account Status</span>
+                            <span class="info-value" data-i18n="statusActive">✓ Active</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Plan</span>
-                            <span class="info-value">Free Trial</span>
+                            <span class="info-label" data-i18n="labelPlan">Plan</span>
+                            <span class="info-value" data-i18n="planTrial">Free Trial</span>
                         </div>
                     </div>
 
                     <form onsubmit="handleProfileUpdate(event)">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="firstName">First Name *</label>
+                                <label for="firstName" data-i18n="labelFirstName">First Name *</label>
                                 <input type="text" id="firstName" placeholder="Enter your first name" required>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Last Name *</label>
+                                <label for="lastName" data-i18n="labelLastName">Last Name *</label>
                                 <input type="text" id="lastName" placeholder="Enter your last name" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
+                            <label for="email" data-i18n="labelEmail">Email Address *</label>
                             <input type="email" id="email" placeholder="your@email.com" readonly>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="company">Company</label>
+                                <label for="company" data-i18n="labelCompany">Company</label>
                                 <input type="text" id="company" placeholder="Your company name">
                             </div>
                             <div class="form-group">
-                                <label for="teamSize">Team Size</label>
+                                <label for="teamSize" data-i18n="labelTeamSize">Team Size</label>
                                 <select id="teamSize">
                                     <option value="">Select team size</option>
                                     <option value="1-5">1-5 people</option>
@@ -583,13 +648,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="bio">Bio</label>
+                            <label for="bio" data-i18n="labelBio">Bio</label>
                             <textarea id="bio" placeholder="Tell us about yourself" style="min-height: 100px;"></textarea>
                         </div>
 
                         <div class="button-group">
-                            <button type="button" class="btn btn-secondary" onclick="navigateTo('dashboard.html')">Back to Dashboard</button>
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="button" class="btn btn-secondary" onclick="navigateTo('dashboard.html')" data-i18n="btnBack">Back to Dashboard</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="btnSave">Save Changes</button>
                         </div>
                     </form>
                 </div>
@@ -720,6 +785,9 @@
     </div>
 
     <script>
+        let currentLang = localStorage.getItem('lang') || 'en';
+        let currentTheme = localStorage.getItem('theme') || 'light';
+
         function navigateTo(page) {
             window.location.href = page;
         }
@@ -865,8 +933,102 @@
 
         // Load user data on page load
         document.addEventListener('DOMContentLoaded', function() {
+            applyTheme(currentTheme);
+            applyLanguage(currentLang);
             loadUserData();
         });
+
+        // Translations
+        const translations = {
+            en: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                navDashboard: "Dashboard",
+                navProjects: "Projects",
+                navTeam: "Team",
+                navHelp: "Help",
+                myAccount: "My Account",
+                accountSettings: "Account Settings",
+                menuProfile: "👤 Profile Information",
+                menuPassword: "🔐 Change Password",
+                menuNotifications: "🔔 Notifications",
+                menuBilling: "💳 Billing",
+                menuSecurity: "🛡️ Security",
+                profileTitle: "Profile Information",
+                labelMemberSince: "Member Since",
+                labelStatus: "Account Status",
+                statusActive: "✓ Active",
+                labelPlan: "Plan",
+                planTrial: "Free Trial",
+                labelFirstName: "First Name *",
+                labelLastName: "Last Name *",
+                labelEmail: "Email Address *",
+                labelCompany: "Company",
+                labelTeamSize: "Team Size",
+                labelBio: "Bio",
+                btnBack: "Back to Dashboard",
+                btnSave: "Save Changes"
+            },
+            ar: {
+                brandName: "Mo_nassar (Technology Venture’s)",
+                navDashboard: "لوحة التحكم",
+                navProjects: "المشاريع",
+                navTeam: "الفريق",
+                navHelp: "مساعدة",
+                myAccount: "حسابي",
+                accountSettings: "إعدادات الحساب",
+                menuProfile: "👤 بيانات الملف الشخصي",
+                menuPassword: "🔐 تغيير كلمة السر",
+                menuNotifications: "🔔 الإشعارات",
+                menuBilling: "💳 الفواتير",
+                menuSecurity: "🛡️ الأمان",
+                profileTitle: "بيانات الملف الشخصي",
+                labelMemberSince: "عضو منذ",
+                labelStatus: "حالة الحساب",
+                statusActive: "✓ نشط",
+                labelPlan: "الخطة",
+                planTrial: "تجربة مجانية",
+                labelFirstName: "الاسم الأول *",
+                labelLastName: "اسم العائلة *",
+                labelEmail: "البريد الإلكتروني *",
+                labelCompany: "الشركة",
+                labelTeamSize: "حجم الفريق",
+                labelBio: "نبذة عنك",
+                btnBack: "رجوع للوحة التحكم",
+                btnSave: "حفظ التغييرات"
+            }
+        };
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            applyTheme(currentTheme);
+        }
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.getElementById('themeBtn').textContent = theme === 'light' ? '🌙' : '☀️';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('lang', currentLang);
+            applyLanguage(currentLang);
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.getElementById('langBtn').textContent = lang === 'en' ? 'عربي' : 'English';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            loadUserData();
+        }
     </script>
 </body>
 </html>
