@@ -422,8 +422,8 @@
         left: 20px;
     }
     .btn-icon {
-        background: rgba(255, 255, 255, 0.2);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background : rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(131, 131, 131, 0.3);
         border-radius: 6px;
         padding: 5px 10px;
         cursor: pointer;
@@ -480,6 +480,20 @@
             padding: 12px;
             font-size: 14px;
         }
+
+        .btn-icon {
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(131, 131, 131, 0.3);
+        border-radius: 6px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        color: white;
+        transition: all 0.3s;
+    }
+        .btn-icon:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
     }
 </style>
 
@@ -707,16 +721,14 @@
                 people3: "من 11 إلى 25 أشخاص",
                 people4: "من 25 إلى 50 شخصاً",
                 people5:"أكثر من 50 شخصاً"
-
-people5: "أكثر من 50 شخصاً",
             }
         };
 
         function toggleTheme() {
-            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-            localStorage.setItem('theme', currentTheme);
-            applyTheme(currentTheme);
-        }
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        localStorage.setItem("theme", currentTheme);
+        applyTheme(currentTheme);
+      }
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
