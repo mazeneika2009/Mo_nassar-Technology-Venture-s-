@@ -543,6 +543,14 @@
             .account-header h1 {
                 font-size: 24px;
             }
+
+            .account-header {
+                padding: 30px 20px;
+            }
+
+            .sidebar {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -638,11 +646,11 @@
                             <div class="form-group">
                                 <label for="teamSize" data-i18n="labelTeamSize">Team Size</label>
                                 <select id="teamSize">
-                                    <option value="">Select team size</option>
-                                    <option value="1-5">1-5 people</option>
-                                    <option value="6-20">6-20 people</option>
-                                    <option value="21-50">21-50 people</option>
-                                    <option value="50+">50+ people</option>
+                                    <option value="" data-i18n="optSelectTeam">Select team size</option>
+                                    <option value="1-5" data-i18n="opt1_5">1-5 people</option>
+                                    <option value="6-20" data-i18n="opt6_20">6-20 people</option>
+                                    <option value="21-50" data-i18n="opt21_50">21-50 people</option>
+                                    <option value="50+" data-i18n="opt50plus">50+ people</option>
                                 </select>
                             </div>
                         </div>
@@ -661,123 +669,123 @@
 
                 <!-- Password Section -->
                 <div id="password" class="section">
-                    <h2>Change Password</h2>
+                    <h2 data-i18n="passwordTitle">Change Password</h2>
                     
                     <form onsubmit="handlePasswordChange(event)">
                         <div class="form-group">
-                            <label for="currentPassword">Current Password *</label>
-                            <input type="password" id="currentPassword" placeholder="Enter your current password" required>
+                            <label for="currentPassword" data-i18n="labelCurrentPass">Current Password *</label>
+                            <input type="password" id="currentPassword" data-i18n-placeholder="phCurrentPass" placeholder="Enter your current password" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="newPassword">New Password *</label>
-                            <input type="password" id="newPassword" placeholder="Enter new password (min 8 characters)" required minlength="8">
+                            <label for="newPassword" data-i18n="labelNewPass">New Password *</label>
+                            <input type="password" id="newPassword" data-i18n-placeholder="phNewPass" placeholder="Enter new password (min 8 characters)" required minlength="8">
                         </div>
 
                         <div class="form-group">
-                            <label for="confirmPassword">Confirm Password *</label>
-                            <input type="password" id="confirmPassword" placeholder="Confirm new password" required minlength="8">
+                            <label for="confirmPassword" data-i18n="labelConfirmPass">Confirm Password *</label>
+                            <input type="password" id="confirmPassword" data-i18n-placeholder="phConfirmPass" placeholder="Confirm new password" required minlength="8">
                         </div>
 
                         <div class="button-group">
-                            <button type="button" class="btn btn-secondary" onclick="switchSection('profile')">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Update Password</button>
+                            <button type="button" class="btn btn-secondary" onclick="switchSection('profile')" data-i18n="btnCancel">Cancel</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="btnUpdatePass">Update Password</button>
                         </div>
                     </form>
                 </div>
 
                 <!-- Notifications Section -->
                 <div id="notifications" class="section">
-                    <h2>Notification Preferences</h2>
+                    <h2 data-i18n="notifTitle">Notification Preferences</h2>
                     
                     <div style="margin-bottom: 25px;">
                         <label style="display: flex; align-items: center; margin-bottom: 15px; cursor: pointer;">
                             <input type="checkbox" id="emailNotifications" checked style="width: auto; margin-right: 10px;">
-                            <span>Email notifications for project updates</span>
+                            <span data-i18n="lblEmailNotif">Email notifications for project updates</span>
                         </label>
 
                         <label style="display: flex; align-items: center; margin-bottom: 15px; cursor: pointer;">
                             <input type="checkbox" id="teamNotifications" checked style="width: auto; margin-right: 10px;">
-                            <span>Team activity notifications</span>
+                            <span data-i18n="lblTeamNotif">Team activity notifications</span>
                         </label>
 
                         <label style="display: flex; align-items: center; margin-bottom: 15px; cursor: pointer;">
                             <input type="checkbox" id="reminders" checked style="width: auto; margin-right: 10px;">
-                            <span>Task and deadline reminders</span>
+                            <span data-i18n="lblReminders">Task and deadline reminders</span>
                         </label>
 
                         <label style="display: flex; align-items: center; cursor: pointer;">
                             <input type="checkbox" id="weeklyDigest" style="width: auto; margin-right: 10px;">
-                            <span>Weekly digest email</span>
+                            <span data-i18n="lblDigest">Weekly digest email</span>
                         </label>
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn btn-secondary" onclick="switchSection('profile')">Back</button>
-                        <button type="button" class="btn btn-primary" onclick="saveNotifications()">Save Preferences</button>
+                        <button type="button" class="btn btn-secondary" onclick="switchSection('profile')" data-i18n="btnBackShort">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="saveNotifications()" data-i18n="btnSavePref">Save Preferences</button>
                     </div>
                 </div>
 
                 <!-- Billing Section -->
                 <div id="billing" class="section">
-                    <h2>Billing & Subscription</h2>
+                    <h2 data-i18n="billingTitle">Billing & Subscription</h2>
                     
                     <div class="info-box">
                         <div class="info-row">
-                            <span class="info-label">Current Plan</span>
-                            <span class="info-value">Free Trial</span>
+                            <span class="info-label" data-i18n="lblCurrentPlan">Current Plan</span>
+                            <span class="info-value" data-i18n="valFreeTrial">Free Trial</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Days Remaining</span>
-                            <span class="info-value">13 days</span>
+                            <span class="info-label" data-i18n="lblDaysRemaining">Days Remaining</span>
+                            <span class="info-value" data-i18n="valDays">13 days</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Billing Cycle</span>
-                            <span class="info-value">Monthly</span>
+                            <span class="info-label" data-i18n="lblBillingCycle">Billing Cycle</span>
+                            <span class="info-value" data-i18n="valMonthly">Monthly</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Next Billing Date</span>
+                            <span class="info-label" data-i18n="lblNextBilling">Next Billing Date</span>
                             <span class="info-value">January 30, 2026</span>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="cardInfo">Payment Method</label>
-                        <input type="text" id="cardInfo" placeholder="Add credit card" value="•••• •••• •••• 4242">
+                        <label for="cardInfo" data-i18n="lblPaymentMethod">Payment Method</label>
+                        <input type="text" id="cardInfo" data-i18n-placeholder="phCard" placeholder="Add credit card" value="•••• •••• •••• 4242">
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn btn-secondary" onclick="switchSection('profile')">Back</button>
-                        <button type="button" class="btn btn-primary">Upgrade Plan</button>
-                        <button type="button" class="btn btn-danger">Cancel Subscription</button>
+                        <button type="button" class="btn btn-secondary" onclick="switchSection('profile')" data-i18n="btnBackShort">Back</button>
+                        <button type="button" class="btn btn-primary" data-i18n="btnUpgrade">Upgrade Plan</button>
+                        <button type="button" class="btn btn-danger" data-i18n="btnCancelSub">Cancel Subscription</button>
                     </div>
                 </div>
 
                 <!-- Security Section -->
                 <div id="security" class="section">
-                    <h2>Security Settings</h2>
+                    <h2 data-i18n="securityTitle">Security Settings</h2>
                     
                     <div class="info-box">
-                        <h3 style="margin-top: 0; color: #1f2937;">Two-Factor Authentication</h3>
-                        <p style="font-size: 14px; color: #666; margin-bottom: 15px;">Add an extra layer of security to your account</p>
-                        <button type="button" class="btn btn-primary" style="width: 200px;">Enable 2FA</button>
+                        <h3 style="margin-top: 0; color: #1f2937;" data-i18n="sec2FA">Two-Factor Authentication</h3>
+                        <p style="font-size: 14px; color: #666; margin-bottom: 15px;" data-i18n="sec2FAText">Add an extra layer of security to your account</p>
+                        <button type="button" class="btn btn-primary" style="width: 200px;" data-i18n="btnEnable2FA">Enable 2FA</button>
                     </div>
 
                     <div class="info-box">
-                        <h3 style="margin-top: 0; color: #1f2937;">Active Sessions</h3>
+                        <h3 style="margin-top: 0; color: #1f2937;" data-i18n="secSessions">Active Sessions</h3>
                         <div class="info-row">
-                            <span class="info-label">Current Device</span>
+                            <span class="info-label" data-i18n="lblDevice">Current Device</span>
                             <span class="info-value">Windows - Chrome</span>
                         </div>
                         <div class="info-row">
-                            <span class="info-label">Last Activity</span>
-                            <span class="info-value">Just now</span>
+                            <span class="info-label" data-i18n="lblLastActivity">Last Activity</span>
+                            <span class="info-value" data-i18n="valJustNow">Just now</span>
                         </div>
                     </div>
 
                     <div class="button-group">
-                        <button type="button" class="btn btn-secondary" onclick="switchSection('profile')">Back</button>
-                        <button type="button" class="btn btn-danger">Sign Out All Devices</button>
+                        <button type="button" class="btn btn-secondary" onclick="switchSection('profile')" data-i18n="btnBackShort">Back</button>
+                        <button type="button" class="btn btn-danger" data-i18n="btnSignOutAll">Sign Out All Devices</button>
                     </div>
                 </div>
             </div>
@@ -966,7 +974,49 @@
                 labelTeamSize: "Team Size",
                 labelBio: "Bio",
                 btnBack: "Back to Dashboard",
-                btnSave: "Save Changes"
+                btnSave: "Save Changes",
+                optSelectTeam: "Select team size",
+                opt1_5: "1-5 people",
+                opt6_20: "6-20 people",
+                opt21_50: "21-50 people",
+                opt50plus: "50+ people",
+                passwordTitle: "Change Password",
+                labelCurrentPass: "Current Password *",
+                phCurrentPass: "Enter your current password",
+                labelNewPass: "New Password *",
+                phNewPass: "Enter new password (min 8 characters)",
+                labelConfirmPass: "Confirm Password *",
+                phConfirmPass: "Confirm new password",
+                btnCancel: "Cancel",
+                btnUpdatePass: "Update Password",
+                notifTitle: "Notification Preferences",
+                lblEmailNotif: "Email notifications for project updates",
+                lblTeamNotif: "Team activity notifications",
+                lblReminders: "Task and deadline reminders",
+                lblDigest: "Weekly digest email",
+                btnBackShort: "Back",
+                btnSavePref: "Save Preferences",
+                billingTitle: "Billing & Subscription",
+                lblCurrentPlan: "Current Plan",
+                valFreeTrial: "Free Trial",
+                lblDaysRemaining: "Days Remaining",
+                valDays: "13 days",
+                lblBillingCycle: "Billing Cycle",
+                valMonthly: "Monthly",
+                lblNextBilling: "Next Billing Date",
+                lblPaymentMethod: "Payment Method",
+                phCard: "Add credit card",
+                btnUpgrade: "Upgrade Plan",
+                btnCancelSub: "Cancel Subscription",
+                securityTitle: "Security Settings",
+                sec2FA: "Two-Factor Authentication",
+                sec2FAText: "Add an extra layer of security to your account",
+                btnEnable2FA: "Enable 2FA",
+                secSessions: "Active Sessions",
+                lblDevice: "Current Device",
+                lblLastActivity: "Last Activity",
+                valJustNow: "Just now",
+                btnSignOutAll: "Sign Out All Devices"
             },
             ar: {
                 brandName: "Mo_nassar (Technology Venture’s)",
@@ -994,7 +1044,49 @@
                 labelTeamSize: "حجم الفريق",
                 labelBio: "نبذة عنك",
                 btnBack: "رجوع للوحة التحكم",
-                btnSave: "حفظ التغييرات"
+                btnSave: "حفظ التغييرات",
+                optSelectTeam: "اختار حجم الفريق",
+                opt1_5: "1-5 أفراد",
+                opt6_20: "6-20 فرد",
+                opt21_50: "21-50 فرد",
+                opt50plus: "50+ فرد",
+                passwordTitle: "تغيير كلمة السر",
+                labelCurrentPass: "كلمة السر الحالية *",
+                phCurrentPass: "دخل كلمة السر الحالية",
+                labelNewPass: "كلمة السر الجديدة *",
+                phNewPass: "دخل كلمة سر جديدة (8 حروف على الأقل)",
+                labelConfirmPass: "تأكيد كلمة السر *",
+                phConfirmPass: "أكد كلمة السر الجديدة",
+                btnCancel: "إلغاء",
+                btnUpdatePass: "تحديث كلمة السر",
+                notifTitle: "تفضيلات الإشعارات",
+                lblEmailNotif: "إشعارات البريد الإلكتروني لتحديثات المشروع",
+                lblTeamNotif: "إشعارات نشاط الفريق",
+                lblReminders: "تذكيرات المهام والمواعيد",
+                lblDigest: "ملخص أسبوعي",
+                btnBackShort: "رجوع",
+                btnSavePref: "حفظ التفضيلات",
+                billingTitle: "الفواتير والاشتراك",
+                lblCurrentPlan: "الخطة الحالية",
+                valFreeTrial: "تجربة مجانية",
+                lblDaysRemaining: "الأيام المتبقية",
+                valDays: "13 يوم",
+                lblBillingCycle: "دورة الفوترة",
+                valMonthly: "شهري",
+                lblNextBilling: "تاريخ الفاتورة القادمة",
+                lblPaymentMethod: "طريقة الدفع",
+                phCard: "إضافة بطاقة ائتمان",
+                btnUpgrade: "ترقية الخطة",
+                btnCancelSub: "إلغاء الاشتراك",
+                securityTitle: "إعدادات الأمان",
+                sec2FA: "المصادقة الثنائية",
+                sec2FAText: "ضيف طبقة حماية إضافية لحسابك",
+                btnEnable2FA: "تفعيل المصادقة الثنائية",
+                secSessions: "الجلسات النشطة",
+                lblDevice: "الجهاز الحالي",
+                lblLastActivity: "آخر نشاط",
+                valJustNow: "الآن",
+                btnSignOutAll: "تسجيل الخروج من كل الأجهزة"
             }
         };
 
@@ -1024,6 +1116,13 @@
                 const key = el.getAttribute('data-i18n');
                 if (translations[lang][key]) {
                     el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
                 }
             });
             

@@ -4,667 +4,313 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invite Team - Mo_nassar (Technology Venture’s)</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-body: #f9fafb;
-            --bg-card: #ffffff;
-            --text-main: #333333;
-            --text-heading: #1f2937;
-            --text-secondary: #666666;
-            --border-color: #e5e7eb;
-            --primary-color: #6366f1;
-            --primary-hover: #4f46e5;
-            --sidebar-bg: #ffffff;
-            --step-bg: #f3f4f6;
-            --step-text: #333;
-            --input-bg: #ffffff;
-        }
-
-        [data-theme="dark"] {
-            --bg-body: #111827;
-            --bg-card: #1f2937;
-            --text-main: #e5e7eb;
-            --text-heading: #f9fafb;
-            --text-secondary: #9ca3af;
-            --border-color: #374151;
-            --primary-color: #818cf8;
-            --primary-hover: #6366f1;
-            --sidebar-bg: #1f2937;
-            --step-bg: #374151;
-            --step-text: #e5e7eb;
-            --input-bg: #374151;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-body);
-            padding: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        header {
-            background-color: var(--bg-card);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
-            transition: background-color 0.3s;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #0ea5e9;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 30px;
-        }
-
-        .sidebar {
-            background-color: var(--sidebar-bg);
-            padding: 30px;
-            border-radius: 12px;
-            height: fit-content;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: background-color 0.3s;
-        }
-
-        .sidebar h2 {
-            font-size: 16px;
-            color: var(--text-heading);
-            margin-bottom: 20px;
-        }
-
-        .progress-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .progress-step {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: var(--step-bg);
-            color: var(--step-text);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .progress-step:hover:not(.active):not(.completed) {
-            opacity: 0.8;
-        }
-
-        .progress-step.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .progress-step.completed {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-
-        .step-number {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            background-color: var(--bg-card);
-            color: var(--primary-color);
-        }
-
-        .progress-step.active .step-number {
-            background-color: var(--bg-card);
-            color: var(--primary-color);
-        }
-
-        .progress-step.completed .step-number {
-            background-color: #10b981;
-            color: white;
-        }
-
-        .form-card {
-            background-color: var(--bg-card);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: background-color 0.3s;
-        }
-
-        .form-card h1 {
-            font-size: 32px;
-            color: var(--text-heading);
-            margin-bottom: 10px;
-        }
-
-        .form-card .subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-size: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: var(--text-heading);
-            font-size: 14px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border-color);
-            background-color: var(--input-bg);
-            color: var(--text-main);
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-            font-family: inherit;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .email-input-group {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .email-input-group input {
-            margin-bottom: 0;
-        }
-
-        .btn-add {
-            padding: 12px 25px;
-            background-color: var(--step-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-main);
-            transition: all 0.3s;
-            align-self: flex-end;
-        }
-
-        .btn-add:hover {
-            opacity: 0.8;
-        }
-
-        .team-member-list {
-            margin-top: 25px;
-        }
-
-        .team-member-list h3 {
-            font-size: 16px;
-            color: var(--text-heading);
-            margin-bottom: 15px;
-        }
-
-        .member-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background-color: var(--bg-body);
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .member-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .member-avatar {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .member-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .member-email {
-            font-weight: 500;
-            color: var(--text-heading);
-            font-size: 14px;
-        }
-
-        .member-role {
-            font-size: 12px;
-            color: var(--text-secondary);
-        }
-
-        .remove-btn {
-            background-color: transparent;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            font-size: 18px;
-            transition: opacity 0.3s;
-        }
-
-        .remove-btn:hover {
-            opacity: 0.7;
-        }
-
-        .role-select {
-            width: 150px;
-            padding: 8px 12px;
-            font-size: 13px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        input[type="checkbox"] {
-            width: auto;
-            cursor: pointer;
-        }
-
-        .checkbox-label {
-            font-size: 14px;
-            cursor: pointer;
-            margin-bottom: 0;
-            font-weight: normal;
-        }
-
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            flex: 1;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary {
-            background-color: var(--step-bg);
-            color: var(--text-main);
-        }
-
-        .btn-secondary:hover {
-            opacity: 0.8;
-        }
-
-        .skip-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .skip-link a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .skip-link a:hover {
-            text-decoration: underline;
-        }
-
-        .info-box {
-            background-color: #f0f9ff;
-            border-left: 4px solid #3b82f6;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 14px;
-            color: #1e40af;
-        }
-
-        /* Modern Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        header {
-            animation: fadeInDown 0.6s ease-out;
-        }
-
-        .sidebar {
-            animation: slideInLeft 0.7s ease-out 0.2s both;
-        }
-
-        .main-content {
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        .form-section {
-            animation: scaleIn 0.6s ease-out 0.3s both;
-            perspective: 1000px;
-        }
-
-        .form-section:hover {
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.15);
-        }
-
-        .info-box {
-            animation: fadeInUp 0.6s ease-out 0.4s both;
-        }
-
-        .form-group {
-            animation: fadeInUp 0.5s ease-out;
-            animation-fill-mode: both;
-        }
-
-        .form-group:nth-child(1) {
-            animation-delay: 0.4s;
-        }
-
-        .form-group:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-
-        input, select {
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
-        }
-
-        .email-input-group {
-            animation: fadeInUp 0.6s ease-out 0.5s both;
-        }
-
-        .btn-add {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-add::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-
-        .btn-add:hover::before {
-            left: 100%;
-        }
-
-        .team-member {
-            animation: slideIn 0.4s ease-out;
-            animation-fill-mode: both;
-            perspective: 1000px;
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: translateX(5px) rotateY(-2deg);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
-        }
-
-        .team-members-list {
-            animation: fadeInUp 0.6s ease-out 0.5s both;
-        }
-
-        .role-option {
-            animation: fadeInUp 0.5s ease-out;
-            animation-fill-mode: both;
-            perspective: 1000px;
-            transition: all 0.3s ease;
-        }
-
-        .role-option:nth-child(1) {
-            animation-delay: 0.55s;
-        }
-
-        .role-option:nth-child(2) {
-            animation-delay: 0.6s;
-        }
-
-        .role-option:nth-child(3) {
-            animation-delay: 0.65s;
-        }
-
-        .role-option:hover {
-            transform: translateY(-3px) scale(1.02);
-        }
-
-        .step-item {
-            animation: fadeInUp 0.5s ease-out;
-            animation-fill-mode: both;
-            transition: all 0.3s ease;
-        }
-
-        .step-item:nth-child(1) {
-            animation-delay: 0.2s;
-        }
-
-        .step-item:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-
-        .step-item:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        .step-item:nth-child(4) {
-            animation-delay: 0.45s;
-        }
-
-        .step-item:hover {
-            transform: translateX(5px);
-            background: #f3f4f6;
-        }
-
-        /* Controls for Theme and Lang */
-        .controls {
-            display: flex;
-            gap: 10px;
-            margin-right: 20px;
-        }
-        [dir="rtl"] .controls {
-            margin-right: 0;
-            margin-left: 20px;
-        }
-        .btn-icon {
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 5px 10px;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--text-main);
-            transition: all 0.3s;
-        }
-        .btn-icon:hover {
-            background-color: var(--bg-body);
-        }
-
-        /* RTL Support */
-        [dir="rtl"] {
-            text-align: right;
-        }
-        [dir="rtl"] .info-box {
-            border-left: none;
-            border-right: 4px solid #3b82f6;
-        }
-        [dir="rtl"] .checkbox-group {
-            gap: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-
-            .email-input-group {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-add {
-                width: 100%;
-            }
-
-            .button-group {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                order: -1;
-            }
-
-            .member-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .role-select {
-                width: 100%;
-                margin-top: 10px;
-            }
-        }
-    </style>
+  <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-body: #f9fafb;
+    --bg-card: #ffffff;
+    --text-main: #333333;
+    --text-heading: #1f2937;
+    --text-secondary: #666666;
+    --border-color: #e5e7eb;
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --sidebar-bg: #ffffff;
+    --step-bg: #f3f4f6;
+    --step-text: #333;
+    --input-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+    --bg-body: #111827;
+    --bg-card: #1f2937;
+    --text-main: #e5e7eb;
+    --text-heading: #f9fafb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --primary-color: #818cf8;
+    --primary-hover: #6366f1;
+    --sidebar-bg: #1f2937;
+    --step-bg: #374151;
+    --step-text: #e5e7eb;
+    --input-bg: #374151;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-main);
+    background-color: var(--bg-body);
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ================= HEADER ================= */
+header {
+    background-color: var(--bg-card);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0ea5e9;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+/* ================= LAYOUT ================= */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.sidebar h2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* ================= PROGRESS ================= */
+.progress-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: var(--step-bg);
+    cursor: pointer;
+}
+
+.progress-step.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.progress-step.completed {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* ================= FORM ================= */
+.form-card {
+    background-color: var(--bg-card);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.form-card h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+    color: var(--text-secondary);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+}
+
+/* ================= EMAIL GROUP ================= */
+.email-input-group {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+}
+
+.btn-add {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+/* ================= TEAM ================= */
+.member-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: var(--bg-body);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.member-info {
+    display: flex;
+    gap: 12px;
+}
+
+.member-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.role-select {
+    width: 150px;
+}
+
+/* ================= BUTTONS ================= */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--step-bg);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        order: -1;
+    }
+
+    .email-input-group {
+        grid-template-columns: 1fr;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .role-select {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .form-card {
+        padding: 25px 20px;
+    }
+
+    .form-card h1 {
+        font-size: 24px;
+    }
+
+    input, select {
+        padding: 10px 12px;
+    }
+
+    .member-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .member-email {
+        word-break: break-word;
+    }
+}
+</style>
+
 </head>
 <body>
     <div class="container">
