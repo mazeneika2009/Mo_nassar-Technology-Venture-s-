@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Mo_nassar (Technology Venture’s)</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
+    * {
+       padding: 0;
             box-sizing: border-box;
         }
 
@@ -38,7 +37,7 @@
             background-color: var(--bg-body);
             color: var(--text-main);
             transition: background-color 0.3s, color 0.3s;
-        }
+        };
 
         /* Sidebar */
         .sidebar {
@@ -110,10 +109,6 @@
         .admin-header h1 {
             font-size: 28px;
             color: var(--text-heading);
-        }
-
-        body.dark-mode .admin-header h1 {
-            color: #f0f0f0;
         }
 
         .admin-header-right {
@@ -268,12 +263,12 @@
             font-size: 16px;
             font-weight: 600;
             color: var(--text-heading);
-            margin-bottom: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            overflow-x: auto;
         }
 
         table thead {
@@ -325,6 +320,16 @@
             color: #92400e;
         }
 
+        .status-completed {
+            background-color: #e5e7eb;
+            color: #4b5563;
+        }
+
+        [data-theme="dark"] .status-completed {
+            background-color: #374151;
+            color: #9ca3af;
+        }
+
         /* Content Sections */
         .section {
             display: none;
@@ -365,6 +370,11 @@
             cursor: pointer;
             color: var(--text-heading);
             margin-right: 15px;
+        }
+
+        [dir="rtl"] .mobile-sidebar-toggle {
+            margin-right: 0;
+            margin-left: 15px;
         }
 
         /* Overlay */
@@ -438,6 +448,11 @@
                 top: 0;
                 left: 0;
                 border-bottom: none;
+                
+                    }
+
+            [dir="rtl"] .sidebar {
+                transform: translateX(100%);
             }
 
             .sidebar.active {
@@ -469,7 +484,9 @@
 
             .admin-header-right {
                 width: 100%;
-                justify-content: space-between;
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             .stats-grid {
@@ -483,18 +500,36 @@
             .sidebar-menu {
                 display: block;
             }
-
             .sidebar-menu li {
                 margin-bottom: 10px;
             }
             
             /* Table responsiveness */
-            .table-card {
+            .table-card, .section-content {
                 overflow-x: auto;
             }
-            
-            table {
-                min-width: 600px;
+        }
+
+        @media (max-width: 480px) {
+            .admin-header {
+                padding: 15px;
+            }
+            .admin-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .date-filter {
+                text-align: center;
+            }
+            .user-profile {
+                justify-content: center;
+                background-color: var(--bg-body);
+                padding: 8px;
+                border-radius: 8px;
+            }
+            .controls {
+                justify-content: center;
             }
         }
     </style>
@@ -507,7 +542,7 @@
     <aside class="sidebar">
         <div class="sidebar-logo">
             📊 Mo_nassar Admin
-            <button class="mobile-sidebar-toggle" style="float: right; color: white; font-size: 20px;">✕</button>
+            <button class="mobile-sidebar-toggle sidebar-close-btn">✕</button>
         </div>
         <ul class="sidebar-menu">
             <li><a href="#dashboard" class="active" data-i18n="navDashboard">Dashboard</a></li>
@@ -662,7 +697,7 @@
                             <td>CloudSync</td>
                             <td>32</td>
                             <td>6</td>
-                            <td><span class="status-badge status-inactive" data-i18n="statusCompleted">Completed</span></td>
+                            <td><span class="status-badge status-completed" data-i18n="statusCompleted">Completed</span></td>
                             <td>Dec 28, 2025</td>
                         </tr>
                     </tbody>
@@ -689,7 +724,6 @@
                             <td>12</td>
                             <td>45</td>
                             <td>$2,995</td>
-                            <td>Enterprise</td>
                             <td data-i18n="planEnterprise">Enterprise</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -698,7 +732,6 @@
                             <td>8</td>
                             <td>32</td>
                             <td>$1,995</td>
-                            <td>Professional</td>
                             <td data-i18n="planProfessional">Professional</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -707,7 +740,6 @@
                             <td>15</td>
                             <td>52</td>
                             <td>$3,495</td>
-                            <td>Enterprise</td>
                             <td data-i18n="planEnterprise">Enterprise</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -724,7 +756,6 @@
                             <td>4</td>
                             <td>18</td>
                             <td>$595</td>
-                            <td>Starter</td>
                             <td data-i18n="planStarter">Starter</td>
                             <td><span class="status-badge status-inactive" data-i18n="statusInactive">Inactive</span></td>
                         </tr>
@@ -786,7 +817,7 @@
                             <td>CloudSync</td>
                             <td>32</td>
                             <td>6</td>
-                            <td><span class="status-badge status-inactive" data-i18n="statusCompleted">Completed</span></td>
+                            <td><span class="status-badge status-completed" data-i18n="statusCompleted">Completed</span></td>
                             <td>Dec 28, 2025</td>
                         </tr>
                         <tr>
@@ -831,7 +862,6 @@
                             <td>12</td>
                             <td>45</td>
                             <td>$2,995</td>
-                            <td>Enterprise</td>
                             <td data-i18n="planEnterprise">Enterprise</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -840,7 +870,6 @@
                             <td>8</td>
                             <td>32</td>
                             <td>$1,995</td>
-                            <td>Professional</td>
                             <td data-i18n="planProfessional">Professional</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -849,7 +878,6 @@
                             <td>15</td>
                             <td>52</td>
                             <td>$3,495</td>
-                            <td>Enterprise</td>
                             <td data-i18n="planEnterprise">Enterprise</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -858,7 +886,6 @@
                             <td>6</td>
                             <td>28</td>
                             <td>$995</td>
-                            <td>Starter</td>
                             <td data-i18n="planStarter">Starter</td>
                             <td><span class="status-badge status-pending" data-i18n="statusTrial">Trial</span></td>
                         </tr>
@@ -867,7 +894,6 @@
                             <td>4</td>
                             <td>18</td>
                             <td>$595</td>
-                            <td>Starter</td>
                             <td data-i18n="planStarter">Starter</td>
                             <td><span class="status-badge status-inactive" data-i18n="statusInactive">Inactive</span></td>
                         </tr>
@@ -876,7 +902,6 @@
                             <td>9</td>
                             <td>38</td>
                             <td>$2,495</td>
-                            <td>Professional</td>
                             <td data-i18n="planProfessional">Professional</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
                         </tr>
@@ -905,7 +930,6 @@
                             <td>John Smith</td>
                             <td>john@techstartup.com</td>
                             <td>TechStartup Inc.</td>
-                            <td>Admin</td>
                             <td data-i18n="roleAdmin">Admin</td>
                             <td>Jan 18, 2026</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
@@ -914,7 +938,6 @@
                             <td>Sarah Johnson</td>
                             <td>sarah@digitalventures.com</td>
                             <td>Digital Ventures</td>
-                            <td>Manager</td>
                             <td data-i18n="roleManager">Manager</td>
                             <td>Jan 17, 2026</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
@@ -923,7 +946,6 @@
                             <td>Mike Wilson</td>
                             <td>mike@nexus.com</td>
                             <td>Nexus Solutions</td>
-                            <td>User</td>
                             <td data-i18n="roleUser">User</td>
                             <td>Jan 16, 2026</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
@@ -932,7 +954,6 @@
                             <td>Emma Davis</td>
                             <td>emma@cloudsync.com</td>
                             <td>CloudSync</td>
-                            <td>User</td>
                             <td data-i18n="roleUser">User</td>
                             <td>Jan 15, 2026</td>
                             <td><span class="status-badge status-active" data-i18n="statusActive">Active</span></td>
@@ -941,7 +962,6 @@
                             <td>Alex Brown</td>
                             <td>alex@speedcode.com</td>
                             <td>SpeedCode</td>
-                            <td>User</td>
                             <td data-i18n="roleUser">User</td>
                             <td>Dec 20, 2025</td>
                             <td><span class="status-badge status-inactive" data-i18n="statusInactive">Inactive</span></td>
@@ -1057,7 +1077,6 @@
                     <div style="margin-bottom: 30px;">
                         <h3 style="font-size: 18px; color: var(--text-heading); margin-bottom: 10px;" data-i18n="setAccount">Account</h3>
                         <button style="padding: 10px 20px; background-color: #ef4444; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px;" data-i18n="btnReset">Reset Password</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1134,7 +1153,6 @@
                 lblReports: "Email Reports",
                 lbl2FA: "Two-Factor Authentication",
                 lblLoginAlerts: "Login Alerts",
-                btnReset: "Reset Password",
                 btnReset: "Reset Password",
                 planEnterprise: "Enterprise",
                 planProfessional: "Professional",
@@ -1227,7 +1245,6 @@
                 lblReports: "تقارير البريد الإلكتروني",
                 lbl2FA: "المصادقة الثنائية",
                 lblLoginAlerts: "تنبيهات الدخول",
-                btnReset: "إعادة تعيين كلمة السر",
                 btnReset: "إعادة تعيين كلمة السر",
                 planEnterprise: "مؤسسة",
                 planProfessional: "محترف",
